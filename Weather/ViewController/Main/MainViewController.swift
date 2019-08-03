@@ -26,9 +26,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var totalSummaryLabel: UILabel!  // 날씨 총 요약문
     
-    var curLatitude: Double = 0.0
-    var curLongitude: Double = 0.0
-    
     var weatherVO = WeatherVO()
     var currentVO = WeatherCurrentVO()
     var hourlyVOList = Array<WeatherHourlyVO>()
@@ -41,19 +38,17 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 현재 위치 정보 가져오기
-        let appDel = UIApplication.shared.delegate as? AppDelegate
-        curLatitude = appDel?.curLocation!["latitude"] as! Double
-        curLongitude = appDel?.curLocation!["longitude"] as! Double
-        
-        // 데이터 호출
-        getWeatherInfo()
+        // 좌표 리스트 가져오기
+        let userDefaults = UserDefaults.standard
+        for area in userDefaults.dictionary(forKey: "areaList")! {
+            getWeatherInfo(area.value as! Dictionary<String, Double>)
+        }
     }
 
     
     // MARK: - 날씨 정보 API
-    func getWeatherInfo(){
-        ApiClient().request("\(curLatitude),\(curLongitude)\(WTUrl.postFixUrl().getWeather)", success: { result in
+    func getWeatherInfo(_ area: Dictionary<String, Double>){
+        ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
             //JSON 객체 파싱하기
             do {
                 let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
@@ -165,8 +160,8 @@ class MainViewController: UIViewController {
     }
     
     
-    // MARK: - 검색화면으로 이동
-    @IBAction func searchButtonDidTap(_ sender: Any) {
+    // MARK: - 리스트화면으로 이동
+    @IBAction func listButtonDidTap(_ sender: Any) {
     }
     
     

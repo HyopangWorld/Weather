@@ -30,6 +30,10 @@
 		247470C822F1F57200E6CECF /* WTEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C722F1F57200E6CECF /* WTEnum.swift */; };
 		24B017F222F5393A005F570B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B017F022F5393A005F570B /* IntroViewController.swift */; };
 		24B017F322F5393A005F570B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B017F122F5393A005F570B /* IntroViewController.xib */; };
+		24B0181522F56C9B005F570B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0181322F56C9B005F570B /* ListTableViewCell.swift */; };
+		24B0181622F56C9B005F570B /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B0181422F56C9B005F570B /* ListTableViewCell.xib */; };
+		24B0181A22F56EF4005F570B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0181822F56EF4005F570B /* ListViewController.swift */; };
+		24B0181B22F56EF4005F570B /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B0181922F56EF4005F570B /* ListViewController.xib */; };
 		24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4B22F3CA130036452B /* WTFormat.swift */; };
 		24C0DD4E22F3E9F70036452B /* MainViewController+DailyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4D22F3E9F70036452B /* MainViewController+DailyTable.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +64,10 @@
 		247470C722F1F57200E6CECF /* WTEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTEnum.swift; sourceTree = "<group>"; };
 		24B017F022F5393A005F570B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		24B017F122F5393A005F570B /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		24B0181322F56C9B005F570B /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		24B0181422F56C9B005F570B /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		24B0181822F56EF4005F570B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		24B0181922F56EF4005F570B /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		24C0DD4B22F3CA130036452B /* WTFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFormat.swift; sourceTree = "<group>"; };
 		24C0DD4D22F3E9F70036452B /* MainViewController+DailyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+DailyTable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +130,7 @@
 		247470B822F1C59400E6CECF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				24B0180A22F56BCD005F570B /* List */,
 				244E9D1122F336C700CA1620 /* Main */,
 				24B017F022F5393A005F570B /* IntroViewController.swift */,
 				24B017F122F5393A005F570B /* IntroViewController.xib */,
@@ -188,6 +197,25 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		24B0180A22F56BCD005F570B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				24B0181722F56CA0005F570B /* Cell */,
+				24B0181822F56EF4005F570B /* ListViewController.swift */,
+				24B0181922F56EF4005F570B /* ListViewController.xib */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		24B0181722F56CA0005F570B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				24B0181322F56C9B005F570B /* ListTableViewCell.swift */,
+				24B0181422F56C9B005F570B /* ListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,12 +276,14 @@
 			files = (
 				247470B122F1C53200E6CECF /* LaunchScreen.storyboard in Resources */,
 				240FE73422F26DF100B310D8 /* DetailCollectionViewCell.xib in Resources */,
+				24B0181B22F56EF4005F570B /* ListViewController.xib in Resources */,
 				240FE73022F26D8F00B310D8 /* TimeCollectionViewCell.xib in Resources */,
 				24B017F322F5393A005F570B /* IntroViewController.xib in Resources */,
 				247470AE22F1C53200E6CECF /* Assets.xcassets in Resources */,
 				247470AC22F1C53100E6CECF /* Main.storyboard in Resources */,
 				247470C322F1E55800E6CECF /* DayTableViewCell.xib in Resources */,
 				247470BD22F1C65600E6CECF /* MainViewController.xib in Resources */,
+				24B0181622F56C9B005F570B /* ListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +302,8 @@
 				247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */,
 				240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */,
 				24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */,
+				24B0181A22F56EF4005F570B /* ListViewController.swift in Sources */,
+				24B0181522F56C9B005F570B /* ListTableViewCell.swift in Sources */,
 				24B017F222F5393A005F570B /* IntroViewController.swift in Sources */,
 				240FE73322F26DF100B310D8 /* DetailCollectionViewCell.swift in Sources */,
 				247470A722F1C53100E6CECF /* AppDelegate.swift in Sources */,

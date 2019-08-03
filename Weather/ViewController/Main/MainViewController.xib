@@ -233,14 +233,14 @@
                                 <action selector="webButtonDidTap:" destination="-1" eventType="touchUpInside" id="teD-zo-IUC"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQU-Et-8Kf" userLabel="searchBtn">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQU-Et-8Kf" userLabel="listBtn">
                             <rect key="frame" x="940" y="7" width="61" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="Search">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="searchButtonDidTap:" destination="-1" eventType="touchUpInside" id="9Rf-14-3IX"/>
+                                <action selector="listButtonDidTap:" destination="-1" eventType="touchUpInside" id="9Rf-14-3IX"/>
                             </connections>
                         </button>
                     </subviews>

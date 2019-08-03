@@ -14,6 +14,9 @@ import CoreLocation
 class IntroViewController: UIViewController, CLLocationManagerDelegate{
 
     var locationManager: CLLocationManager?
+    // 좌표 defaults, 카카오페이
+    var curLatitude = 37.4790986
+    var curLongitude = 126.8754323
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,22 +30,31 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        // 좌표 defaults, 카카오페이
-        var latitude = 37.4790986
-        var longitude = 126.8754323
-        
         if let coor = locationManager!.location?.coordinate{
-            latitude = coor.latitude
-            longitude = coor.longitude
+            curLatitude = coor.latitude
+            curLongitude = coor.longitude
         }
         
-        // Appdelgate Share 데이터 저장
-        let appDel = UIApplication.shared.delegate as? AppDelegate
-        
-        appDel?.curLocation = [
-            "latitude" : latitude,
-            "longitude" : longitude
-        ]
+        // 좌표값 저장
+        let userDefaults = UserDefaults.standard
+        if var areaList = userDefaults.dictionary(forKey: "areaList") {
+            areaList.updateValue([
+                "latitude" : curLatitude,
+                "logitude" : curLongitude
+                ], forKey: "curLocation")
+            
+            userDefaults.set(areaList, forKey: "areaList")
+            userDefaults.synchronize()
+            
+        } else {
+            // 초기값 지정
+            userDefaults.setValue([
+                "curLocation" : [ "latitude" : curLatitude,
+                                  "logitude" : curLatitude]]
+                , forKey: "areaList")
+            
+            userDefaults.synchronize()
+        }
         
         presentMainVC()
     }
@@ -50,8 +62,8 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
     
     // MARK: - 메인화면으로 이동
     func presentMainVC(){
-        let mainVC = UINavigationController.init(rootViewController: MainViewController())
-        mainVC.isNavigationBarHidden = true
+        let changeVC = UINavigationController.init(rootViewController: MainViewController())
+        changeVC.isNavigationBarHidden = true
         
         navigationController?.pushViewController(MainViewController(), animated: true)
     }

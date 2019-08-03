@@ -12,9 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    // 사용자 현재 위치 정보
-    var curLocation: Dictionary<String, Any>?
 
     /**
      * 앱 실행
