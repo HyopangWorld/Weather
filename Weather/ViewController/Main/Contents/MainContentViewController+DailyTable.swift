@@ -1,5 +1,5 @@
 //
-//  MainViewController+DayTable.swift
+//  MainContentViewController+DayTable.swift
 //  weather
 //
 //  Created by 김효원 on 02/08/2019.
@@ -11,7 +11,7 @@
 import Foundation
 import UIKit
 
-extension MainViewController: UITableViewDataSource, UITableViewDelegate{
+extension MainContentViewController: UITableViewDataSource, UITableViewDelegate{
     // setting section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dayTableView.rowHeight = 39

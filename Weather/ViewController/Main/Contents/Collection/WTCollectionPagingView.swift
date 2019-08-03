@@ -13,8 +13,8 @@ import UIKit
 
 class WTCollectionPagingView: WTCollectionView {
     
-    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, cellWidth: CGFloat, backgroundColor: UIColor, dataList: Array<Any>) {
-        super.init(navigation: navigation, type: type, collection: collection, backgroundColor: backgroundColor, dataList: dataList)
+    init(type: CollectionViewType, collection: UICollectionView, cellWidth: CGFloat, backgroundColor: UIColor, dataList: Array<Any>) {
+        super.init(type: type, collection: collection, backgroundColor: backgroundColor, dataList: dataList)
         self.cellWidth = cellWidth
     }
     
