@@ -12,8 +12,6 @@ import Foundation
 import UIKit
 
 class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var navigation: UINavigationController? = nil
-    
     // TableView 생성 Type
     var type: CollectionViewType? = nil
     
@@ -24,9 +22,8 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
     
     var dataList = Array<Any>()
     
-    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor, dataList: Array<Any>){
+    init(type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor, dataList: Array<Any>){
         super.init(nibName: nil, bundle: nil)
-        self.navigation = navigation
         self.type = type
         self.collection = collection
         self.backgroundColor = backgroundColor

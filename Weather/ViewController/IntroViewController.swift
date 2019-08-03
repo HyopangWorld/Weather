@@ -35,7 +35,7 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
             curLongitude = coor.longitude
         }
         
-        // 좌표값 저장
+        // 현재 좌표값 저장
         let userDefaults = UserDefaults.standard
         if var areaList = userDefaults.dictionary(forKey: "areaList") {
             areaList.updateValue([
@@ -47,7 +47,7 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
             userDefaults.synchronize()
             
         } else {
-            // 초기값 지정
+            // 초기값 저장
             userDefaults.setValue([
                 "curLocation" : [ "latitude" : curLatitude,
                                   "logitude" : curLatitude]]
@@ -65,6 +65,9 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
         let changeVC = UINavigationController.init(rootViewController: MainViewController())
         changeVC.isNavigationBarHidden = true
         
-        navigationController?.pushViewController(MainViewController(), animated: true)
+        // 메인 스토리보드 이동
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        navigationController?.present(controller, animated: true, completion: nil)
     }
 }
