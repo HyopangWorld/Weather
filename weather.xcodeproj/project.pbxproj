@@ -13,6 +13,12 @@
 		240FE73322F26DF100B310D8 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE73122F26DF100B310D8 /* DetailCollectionViewCell.swift */; };
 		240FE73422F26DF100B310D8 /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240FE73222F26DF100B310D8 /* DetailCollectionViewCell.xib */; };
 		240FE73622F29F1A00B310D8 /* WTCollectionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE73522F29F1A00B310D8 /* WTCollectionPagingView.swift */; };
+		240FE73B22F2F52400B310D8 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE73A22F2F52400B310D8 /* ApiClient.swift */; };
+		240FE73F22F2F7D800B310D8 /* WTUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE73E22F2F7D800B310D8 /* WTUrl.swift */; };
+		240FE74222F30A3000B310D8 /* WeatherCurrentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74122F30A3000B310D8 /* WeatherCurrentVO.swift */; };
+		240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74322F30A5F00B310D8 /* WeatherHourlyVO.swift */; };
+		240FE74622F30AEA00B310D8 /* WeatherDailyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74522F30AEA00B310D8 /* WeatherDailyVO.swift */; };
+		244E9D1022F32D5700CA1620 /* WeatherVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9D0F22F32D5700CA1620 /* WeatherVO.swift */; };
 		247470A722F1C53100E6CECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470A622F1C53100E6CECF /* AppDelegate.swift */; };
 		247470A922F1C53100E6CECF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470A822F1C53100E6CECF /* MainViewController.swift */; };
 		247470AC22F1C53100E6CECF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247470AA22F1C53100E6CECF /* Main.storyboard */; };
@@ -21,8 +27,11 @@
 		247470BD22F1C65600E6CECF /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247470BC22F1C65600E6CECF /* MainViewController.xib */; };
 		247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C022F1E55800E6CECF /* DayTableViewCell.swift */; };
 		247470C322F1E55800E6CECF /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247470C122F1E55800E6CECF /* DayTableViewCell.xib */; };
-		247470C622F1E5D300E6CECF /* WTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C522F1E5D300E6CECF /* WTTableView.swift */; };
 		247470C822F1F57200E6CECF /* WTEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C722F1F57200E6CECF /* WTEnum.swift */; };
+		24B017F222F5393A005F570B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B017F022F5393A005F570B /* IntroViewController.swift */; };
+		24B017F322F5393A005F570B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B017F122F5393A005F570B /* IntroViewController.xib */; };
+		24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4B22F3CA130036452B /* WTFormat.swift */; };
+		24C0DD4E22F3E9F70036452B /* MainViewController+DailyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4D22F3E9F70036452B /* MainViewController+DailyTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +41,12 @@
 		240FE73122F26DF100B310D8 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		240FE73222F26DF100B310D8 /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		240FE73522F29F1A00B310D8 /* WTCollectionPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTCollectionPagingView.swift; sourceTree = "<group>"; };
+		240FE73A22F2F52400B310D8 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		240FE73E22F2F7D800B310D8 /* WTUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTUrl.swift; sourceTree = "<group>"; };
+		240FE74122F30A3000B310D8 /* WeatherCurrentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCurrentVO.swift; sourceTree = "<group>"; };
+		240FE74322F30A5F00B310D8 /* WeatherHourlyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyVO.swift; sourceTree = "<group>"; };
+		240FE74522F30AEA00B310D8 /* WeatherDailyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDailyVO.swift; sourceTree = "<group>"; };
+		244E9D0F22F32D5700CA1620 /* WeatherVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVO.swift; sourceTree = "<group>"; };
 		247470A322F1C53100E6CECF /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		247470A622F1C53100E6CECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		247470A822F1C53100E6CECF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -42,8 +57,11 @@
 		247470BC22F1C65600E6CECF /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		247470C022F1E55800E6CECF /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		247470C122F1E55800E6CECF /* DayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
-		247470C522F1E5D300E6CECF /* WTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTTableView.swift; sourceTree = "<group>"; };
 		247470C722F1F57200E6CECF /* WTEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTEnum.swift; sourceTree = "<group>"; };
+		24B017F022F5393A005F570B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		24B017F122F5393A005F570B /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		24C0DD4B22F3CA130036452B /* WTFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFormat.swift; sourceTree = "<group>"; };
+		24C0DD4D22F3E9F70036452B /* MainViewController+DailyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+DailyTable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +75,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		244E9D1122F336C700CA1620 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				247470C422F1E5B400E6CECF /* Collection */,
+				247470BE22F1E4F200E6CECF /* Cells */,
+				247470A822F1C53100E6CECF /* MainViewController.swift */,
+				24C0DD4D22F3E9F70036452B /* MainViewController+DailyTable.swift */,
+				247470BC22F1C65600E6CECF /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2474709A22F1C53100E6CECF = {
 			isa = PBXGroup;
 			children = (
@@ -92,10 +122,9 @@
 		247470B822F1C59400E6CECF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				247470C422F1E5B400E6CECF /* Common */,
-				247470BE22F1E4F200E6CECF /* Cells */,
-				247470A822F1C53100E6CECF /* MainViewController.swift */,
-				247470BC22F1C65600E6CECF /* MainViewController.xib */,
+				244E9D1122F336C700CA1620 /* Main */,
+				24B017F022F5393A005F570B /* IntroViewController.swift */,
+				24B017F122F5393A005F570B /* IntroViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -104,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				247470C722F1F57200E6CECF /* WTEnum.swift */,
+				240FE73E22F2F7D800B310D8 /* WTUrl.swift */,
+				24C0DD4B22F3CA130036452B /* WTFormat.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -111,6 +142,7 @@
 		247470BA22F1C5B300E6CECF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				240FE73A22F2F52400B310D8 /* ApiClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -139,18 +171,21 @@
 		247470BF22F1E50400E6CECF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				244E9D0F22F32D5700CA1620 /* WeatherVO.swift */,
+				240FE74122F30A3000B310D8 /* WeatherCurrentVO.swift */,
+				240FE74322F30A5F00B310D8 /* WeatherHourlyVO.swift */,
+				240FE74522F30AEA00B310D8 /* WeatherDailyVO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		247470C422F1E5B400E6CECF /* Common */ = {
+		247470C422F1E5B400E6CECF /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				247470C522F1E5D300E6CECF /* WTTableView.swift */,
 				240FE72722F265CA00B310D8 /* WTCollectionView.swift */,
 				240FE73522F29F1A00B310D8 /* WTCollectionPagingView.swift */,
 			);
-			path = Common;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +249,7 @@
 				247470B122F1C53200E6CECF /* LaunchScreen.storyboard in Resources */,
 				240FE73422F26DF100B310D8 /* DetailCollectionViewCell.xib in Resources */,
 				240FE73022F26D8F00B310D8 /* TimeCollectionViewCell.xib in Resources */,
+				24B017F322F5393A005F570B /* IntroViewController.xib in Resources */,
 				247470AE22F1C53200E6CECF /* Assets.xcassets in Resources */,
 				247470AC22F1C53100E6CECF /* Main.storyboard in Resources */,
 				247470C322F1E55800E6CECF /* DayTableViewCell.xib in Resources */,
@@ -228,15 +264,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240FE74222F30A3000B310D8 /* WeatherCurrentVO.swift in Sources */,
 				247470C822F1F57200E6CECF /* WTEnum.swift in Sources */,
+				240FE74622F30AEA00B310D8 /* WeatherDailyVO.swift in Sources */,
+				24C0DD4E22F3E9F70036452B /* MainViewController+DailyTable.swift in Sources */,
 				247470A922F1C53100E6CECF /* MainViewController.swift in Sources */,
 				247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */,
+				240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */,
+				24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */,
+				24B017F222F5393A005F570B /* IntroViewController.swift in Sources */,
 				240FE73322F26DF100B310D8 /* DetailCollectionViewCell.swift in Sources */,
 				247470A722F1C53100E6CECF /* AppDelegate.swift in Sources */,
 				240FE72F22F26D8F00B310D8 /* TimeCollectionViewCell.swift in Sources */,
 				240FE73622F29F1A00B310D8 /* WTCollectionPagingView.swift in Sources */,
-				247470C622F1E5D300E6CECF /* WTTableView.swift in Sources */,
+				240FE73F22F2F7D800B310D8 /* WTUrl.swift in Sources */,
 				240FE72822F265CA00B310D8 /* WTCollectionView.swift in Sources */,
+				240FE73B22F2F52400B310D8 /* ApiClient.swift in Sources */,
+				244E9D1022F32D5700CA1620 /* WeatherVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,10 +9,17 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        infoLabel.text = nil
+    }
 }

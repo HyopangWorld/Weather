@@ -6,15 +6,15 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
-// 공통 Paging CollectionView, WTCollectionView를 상속받는다.
+// Paging CollectionView, WTCollectionView를 상속받는다. (Weather Hourly View)
 
 import Foundation
 import UIKit
 
 class WTCollectionPagingView: WTCollectionView {
     
-    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, cellWidth: CGFloat, backgroundColor: UIColor) {
-        super.init(navigation: navigation, type: type, collection: collection, backgroundColor: backgroundColor)
+    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, cellWidth: CGFloat, backgroundColor: UIColor, dataList: Array<Any>) {
+        super.init(navigation: navigation, type: type, collection: collection, backgroundColor: backgroundColor, dataList: dataList)
         self.cellWidth = cellWidth
     }
     
@@ -41,9 +41,8 @@ class WTCollectionPagingView: WTCollectionView {
         let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
         var roundedIndex = round(index)
         
-        // scrollView, targetContentOffset의 좌표 값으로 스크롤 방향을 알 수 있다.
-        // index를 반올림하여 사용하면 item의 절반 사이즈만큼 스크롤을 해야 페이징이 된다.
-        // 스크로로 방향을 체크하여 올림,내림을 사용하면 좀 더 자연스러운 페이징 효과를 낼 수 있다.
+        // scrollView, targetContentOffset의 좌표 값으로 스크롤 방향
+        // index를 반올림하여 사용하면 item의 절반 사이즈만큼 스크롤
         if scrollView.contentOffset.x > targetContentOffset.pointee.x {
             roundedIndex = floor(index)
         } else {
@@ -51,7 +50,7 @@ class WTCollectionPagingView: WTCollectionView {
             
         }
         
-        // 위 코드를 통해 페이징 될 좌표값을 targetContentOffset에 대입하면 된다.
+        // 페이징 될 좌표값을 targetContentOffset에 대입
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
     }

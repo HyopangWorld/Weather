@@ -13,32 +13,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" reuseIdentifier="TimeCell" id="gTV-IL-0wX" customClass="TimeCollectionViewCell" customModule="weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="90" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="110" height="150"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="90" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="110" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 12시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYq-rm-PVc" userLabel="TimeLabel">
-                        <rect key="frame" x="10" y="5" width="70" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 12시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYq-rm-PVc" userLabel="timeLabel">
+                        <rect key="frame" x="16.5" y="10" width="77.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrF-w9-SkW" userLabel="perLabel">
-                        <rect key="frame" x="32" y="26" width="26" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="38.5" y="34" width="33" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.2517083416780822" blue="0.65258454623287676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⛈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQe-mP-3F7" userLabel="icoLabel">
-                        <rect key="frame" x="22.5" y="51" width="45" height="48"/>
+                        <rect key="frame" x="32.5" y="58.5" width="45" height="48"/>
                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbN-pO-4Ji" userLabel="curTempAlignView">
-                        <rect key="frame" x="25" y="114" width="40" height="23"/>
+                        <rect key="frame" x="35" y="116.5" width="40" height="23"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-m4-a0Z" userLabel="curTempLabel">
                                 <rect key="frame" x="6" y="0.0" width="32" height="23"/>
@@ -58,16 +58,22 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="AQe-mP-3F7" firstAttribute="top" secondItem="JrF-w9-SkW" secondAttribute="bottom" constant="10" id="1Hr-NQ-Rbg"/>
                 <constraint firstItem="eYq-rm-PVc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="9jw-bb-Wz3"/>
                 <constraint firstItem="AQe-mP-3F7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="F87-x5-tGC"/>
                 <constraint firstItem="JrF-w9-SkW" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="K5d-qQ-Qtq"/>
                 <constraint firstItem="JrF-w9-SkW" firstAttribute="top" secondItem="eYq-rm-PVc" secondAttribute="bottom" id="Kqa-TI-URP"/>
-                <constraint firstItem="lbN-pO-4Ji" firstAttribute="top" secondItem="AQe-mP-3F7" secondAttribute="bottom" constant="15" id="WTY-ml-ySu"/>
-                <constraint firstItem="eYq-rm-PVc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="bYL-1z-Cs4"/>
+                <constraint firstItem="eYq-rm-PVc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="hUt-cR-fiU"/>
+                <constraint firstItem="AQe-mP-3F7" firstAttribute="top" secondItem="JrF-w9-SkW" secondAttribute="bottom" constant="5" id="itX-MI-ufI"/>
+                <constraint firstItem="lbN-pO-4Ji" firstAttribute="top" secondItem="AQe-mP-3F7" secondAttribute="bottom" constant="10" id="jZB-qD-nAS"/>
                 <constraint firstItem="lbN-pO-4Ji" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kGQ-hg-8KQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="humLabel" destination="JrF-w9-SkW" id="Vds-hj-uMR"/>
+                <outlet property="icoLabel" destination="AQe-mP-3F7" id="tcz-5C-uJO"/>
+                <outlet property="tempLabel" destination="Pu0-m4-a0Z" id="nvm-A9-gdk"/>
+                <outlet property="timeLabel" destination="eYq-rm-PVc" id="3A0-ta-VeE"/>
+            </connections>
             <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
         </collectionViewCell>
     </objects>

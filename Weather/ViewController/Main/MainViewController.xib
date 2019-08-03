@@ -14,12 +14,16 @@
             <connections>
                 <outlet property="backgroundView" destination="U9M-qe-mpG" id="7fe-UE-DAU"/>
                 <outlet property="bottomView" destination="huS-mp-0l9" id="s1u-KM-7Pf"/>
+                <outlet property="curPosLabel" destination="wBW-bt-zj0" id="lc0-ZQ-eey"/>
+                <outlet property="curTempLabel" destination="dHg-uq-eNV" id="y3c-R8-spD"/>
+                <outlet property="curWetLabel" destination="pW8-Rm-G3q" id="IhJ-Tl-NcG"/>
                 <outlet property="currentTopView" destination="MR7-lo-NCj" id="ppd-Ib-B7K"/>
                 <outlet property="dayTableView" destination="wZK-KR-wCB" id="BQy-Ig-B5W"/>
                 <outlet property="detailCollectionView" destination="3Gq-pi-eFL" id="ltv-jI-DNa"/>
-                <outlet property="noticeView" destination="SaK-de-4po" id="EaI-Qu-wei"/>
+                <outlet property="hourlyCollectionView" destination="gqR-dh-1Mc" id="Rc0-hI-Wvt"/>
                 <outlet property="scrollView" destination="rO5-Yt-XVi" id="pHn-hL-8Mb"/>
-                <outlet property="timeCollectionView" destination="gqR-dh-1Mc" id="Rc0-hI-Wvt"/>
+                <outlet property="totalSummaryLabel" destination="iHL-R6-fsS" id="Dtc-rX-67k"/>
+                <outlet property="totalSummaryView" destination="SaK-de-4po" id="EaI-Qu-wei"/>
                 <outlet property="view" destination="iN0-l3-epB" id="zZf-Ug-ukg"/>
             </connections>
         </placeholder>
@@ -60,10 +64,10 @@
                     <rect key="frame" x="0.0" y="124" width="1024" height="1172"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvg-6Z-mZh" userLabel="curTempView">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="255"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="235"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJP-pr-deL" userLabel="curTempAlignView">
-                                    <rect key="frame" x="438.5" y="85.5" width="147" height="84"/>
+                                    <rect key="frame" x="438.5" y="75.5" width="147" height="84"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHg-uq-eNV" userLabel="curTempLabel">
                                             <rect key="frame" x="25" y="-5.5" width="134" height="95"/>
@@ -81,20 +85,20 @@
                                 </view>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="height" constant="235" id="0Gt-xU-63s"/>
                                 <constraint firstItem="hJP-pr-deL" firstAttribute="centerY" secondItem="xvg-6Z-mZh" secondAttribute="centerY" id="Qha-lw-NMq"/>
-                                <constraint firstAttribute="height" constant="255" id="jWq-7N-Inj"/>
                                 <constraint firstItem="hJP-pr-deL" firstAttribute="centerX" secondItem="xvg-6Z-mZh" secondAttribute="centerX" id="v44-yM-1Sp"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9F-rQ-xoa" userLabel="line">
-                            <rect key="frame" x="0.0" y="254" width="1024" height="1"/>
+                            <rect key="frame" x="0.0" y="234" width="1024" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.80000000000000004" id="98R-LX-nkY"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gqR-dh-1Mc" userLabel="timeCollectionView">
-                            <rect key="frame" x="0.0" y="255" width="1024" height="150"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gqR-dh-1Mc" userLabel="hourlyCollectionView">
+                            <rect key="frame" x="0.0" y="235" width="1024" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="NdD-my-Cmx"/>
                             </constraints>
@@ -106,30 +110,30 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krm-9J-ajL" userLabel="line">
-                            <rect key="frame" x="0.0" y="404" width="1024" height="1"/>
+                            <rect key="frame" x="0.0" y="384" width="1024" height="1"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.80000000000000004" id="qQa-EK-BVN"/>
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wZK-KR-wCB" userLabel="dayTableView">
-                            <rect key="frame" x="23" y="405" width="978" height="275"/>
+                            <rect key="frame" x="23" y="385" width="978" height="275"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="275" id="UXf-rG-ff8"/>
                             </constraints>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fP-L3-qiX" userLabel="line">
-                            <rect key="frame" x="23" y="679" width="978" height="1"/>
+                            <rect key="frame" x="0.0" y="659" width="1024" height="1"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.80000000000000004" id="hlk-GM-Bzx"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaK-de-4po" userLabel="noticeView">
-                            <rect key="frame" x="0.0" y="680" width="1024" height="85"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaK-de-4po" userLabel="totalSummaryView">
+                            <rect key="frame" x="0.0" y="660" width="1024" height="85"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘: 현재 날씨 비. 현재 기온은 26˚이며 오늘 예상 최고 기온은 27˚입니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-R6-fsS" userLabel="noticeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘: 현재 날씨 비. 현재 기온은 26˚이며 오늘 예상 최고 기온은 27˚입니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-R6-fsS" userLabel="totalSummaryLabel">
                                     <rect key="frame" x="23" y="30.5" width="978" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,20 +149,20 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogh-KK-GsG" userLabel="line">
-                            <rect key="frame" x="0.0" y="764" width="1024" height="1"/>
+                            <rect key="frame" x="0.0" y="744" width="1024" height="1"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.80000000000000004" id="u0t-yj-0eA"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14a-JA-Dec" userLabel="detailView">
-                            <rect key="frame" x="0.0" y="765" width="1024" height="350"/>
+                            <rect key="frame" x="0.0" y="745" width="1024" height="280"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3Gq-pi-eFL" userLabel="detailCollectionView">
-                                    <rect key="frame" x="32" y="0.0" width="960" height="350"/>
+                                    <rect key="frame" x="32" y="0.0" width="960" height="280"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="350" id="PIe-Us-h0j"/>
+                                        <constraint firstAttribute="height" constant="280" id="lnf-cd-l6A"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gv6-ad-SbH">
                                         <size key="itemSize" width="50" height="50"/>
@@ -171,7 +175,6 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3Gq-pi-eFL" secondAttribute="trailing" constant="32" id="7DN-4e-Pz5"/>
                                 <constraint firstItem="3Gq-pi-eFL" firstAttribute="top" secondItem="14a-JA-Dec" secondAttribute="top" id="Ieb-rf-pPE"/>
-                                <constraint firstAttribute="height" constant="350" id="SFD-bd-oGc"/>
                                 <constraint firstAttribute="bottom" secondItem="3Gq-pi-eFL" secondAttribute="bottom" id="Yzm-Kt-sgd"/>
                                 <constraint firstItem="3Gq-pi-eFL" firstAttribute="leading" secondItem="14a-JA-Dec" secondAttribute="leading" constant="32" id="lCl-Lp-b7C"/>
                             </constraints>
@@ -179,6 +182,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="wZK-KR-wCB" secondAttribute="trailing" constant="23" id="0Y9-GT-Mrm"/>
+                        <constraint firstItem="ogh-KK-GsG" firstAttribute="trailing" secondItem="6fP-L3-qiX" secondAttribute="trailing" id="3du-1Z-7KM"/>
                         <constraint firstAttribute="trailing" secondItem="gqR-dh-1Mc" secondAttribute="trailing" id="3mi-86-bur"/>
                         <constraint firstItem="SaK-de-4po" firstAttribute="top" secondItem="wZK-KR-wCB" secondAttribute="bottom" id="4RC-qU-d3B"/>
                         <constraint firstItem="l9F-rQ-xoa" firstAttribute="trailing" secondItem="xvg-6Z-mZh" secondAttribute="trailing" id="5pe-pi-3oS"/>
@@ -188,14 +192,12 @@
                         <constraint firstItem="14a-JA-Dec" firstAttribute="top" secondItem="SaK-de-4po" secondAttribute="bottom" id="HjE-Fg-kfS"/>
                         <constraint firstAttribute="bottom" secondItem="14a-JA-Dec" secondAttribute="bottom" id="JCq-aJ-4Ll"/>
                         <constraint firstItem="SaK-de-4po" firstAttribute="trailing" secondItem="ogh-KK-GsG" secondAttribute="trailing" id="OXc-aL-tgE"/>
-                        <constraint firstItem="6fP-L3-qiX" firstAttribute="trailing" secondItem="wZK-KR-wCB" secondAttribute="trailing" id="OaX-jv-QDc"/>
                         <constraint firstItem="gqR-dh-1Mc" firstAttribute="centerX" secondItem="rO5-Yt-XVi" secondAttribute="centerX" id="SVi-XT-akz"/>
                         <constraint firstItem="wZK-KR-wCB" firstAttribute="top" secondItem="gqR-dh-1Mc" secondAttribute="bottom" id="Vb4-7n-zf6"/>
                         <constraint firstItem="gqR-dh-1Mc" firstAttribute="leading" secondItem="rO5-Yt-XVi" secondAttribute="leading" id="bZj-8J-MIQ"/>
                         <constraint firstItem="14a-JA-Dec" firstAttribute="leading" secondItem="rO5-Yt-XVi" secondAttribute="leading" id="dG9-Wi-ms0"/>
                         <constraint firstAttribute="trailing" secondItem="14a-JA-Dec" secondAttribute="trailing" id="eNU-U6-uSh"/>
                         <constraint firstItem="Krm-9J-ajL" firstAttribute="bottom" secondItem="gqR-dh-1Mc" secondAttribute="bottom" id="g5t-N9-QJh"/>
-                        <constraint firstItem="6fP-L3-qiX" firstAttribute="leading" secondItem="wZK-KR-wCB" secondAttribute="leading" id="gOL-p1-uXv"/>
                         <constraint firstItem="l9F-rQ-xoa" firstAttribute="bottom" secondItem="xvg-6Z-mZh" secondAttribute="bottom" id="hBO-Md-OXc"/>
                         <constraint firstItem="gqR-dh-1Mc" firstAttribute="top" secondItem="xvg-6Z-mZh" secondAttribute="bottom" id="iSo-9A-eRU"/>
                         <constraint firstItem="SaK-de-4po" firstAttribute="bottom" secondItem="ogh-KK-GsG" secondAttribute="bottom" id="lV8-oT-5oZ"/>
@@ -208,6 +210,7 @@
                         <constraint firstItem="Krm-9J-ajL" firstAttribute="leading" secondItem="gqR-dh-1Mc" secondAttribute="leading" id="qds-Ud-XgS"/>
                         <constraint firstItem="xvg-6Z-mZh" firstAttribute="leading" secondItem="rO5-Yt-XVi" secondAttribute="leading" id="rXW-1l-MOH"/>
                         <constraint firstItem="l9F-rQ-xoa" firstAttribute="leading" secondItem="xvg-6Z-mZh" secondAttribute="leading" id="roe-sk-QJ2"/>
+                        <constraint firstItem="ogh-KK-GsG" firstAttribute="leading" secondItem="6fP-L3-qiX" secondAttribute="leading" id="vg9-bw-tyT"/>
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huS-mp-0l9" userLabel="bottomView">

@@ -6,7 +6,7 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
-// 공통 CollectionView DataSource, Delegate
+// CollectionView DataSource, Delegate (Weather Detail View)
 
 import Foundation
 import UIKit
@@ -14,19 +14,23 @@ import UIKit
 class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var navigation: UINavigationController? = nil
     
-    var type: CollectionViewType? = nil  // TableView 생성 Type
+    // TableView 생성 Type
+    var type: CollectionViewType? = nil
+    
     var collection: UICollectionView? = nil
     var backgroundColor: UIColor? = nil
-    
     var cellWidth: CGFloat = 0
     var cellHeight: CGFloat = 0
     
-    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor){
+    var dataList = Array<Any>()
+    
+    init(navigation: UINavigationController, type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor, dataList: Array<Any>){
         super.init(nibName: nil, bundle: nil)
         self.navigation = navigation
         self.type = type
         self.collection = collection
         self.backgroundColor = backgroundColor
+        self.dataList = dataList
         
         initView()
     }
@@ -43,10 +47,11 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
         flowLayout.minimumLineSpacing = 0
     }
     
-    //set cell size
+    
+    // MARK: - set cell size
     func setCellSize(){
         cellWidth = collection!.frame.width / 2
-        cellHeight = collection!.frame.height / 5
+        cellHeight = collection!.frame.height / 4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -56,23 +61,33 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
     
     //setting section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return type == .time ? 26 : 10
+        return dataList.count
     }
     
     // setting cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
-        
         switch type {
         case .time? :
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TimeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TimeCollectionViewCell
+            let data = dataList[indexPath.row] as! WeatherHourlyVO
+            
+            cell.timeLabel.text = "\(data.hourlyTime!)시"
+            cell.icoLabel.text = data.icon!.getWeatherIcon()
+            cell.humLabel.text = "\(data.humidity!)"
+            cell.tempLabel.text = "\(data.temperature!)˚"
+            cell.backgroundColor = backgroundColor
+            
+            return cell
         case .detail? :
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath) as! DetailCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath) as! DetailCollectionViewCell
+            cell.titleLabel.text = DetailTypeString(rawValue: indexPath.row)?.getDetailTypeString()
+            cell.infoLabel.text = "\(dataList[indexPath.row])"
+            cell.backgroundColor = backgroundColor
+            
+            return cell
         case .none: break
         }
         
-        cell.backgroundColor = backgroundColor
-        
-        return cell
+        return UICollectionViewCell()
     }
 }

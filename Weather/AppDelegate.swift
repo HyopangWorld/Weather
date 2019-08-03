@@ -12,6 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // 사용자 현재 위치 정보
+    var curLocation: Dictionary<String, Any>?
 
     /**
      * 앱 실행
@@ -22,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 앱 실행하면 인트로 화면으로 넘어간다.
         self.window?.backgroundColor = UIColor.white
-        let introNavigationVC = UINavigationController.init(rootViewController: MainViewController())
+        let introNavigationVC = UINavigationController.init(rootViewController: IntroViewController())
         introNavigationVC.isNavigationBarHidden = true
         self.window?.rootViewController = introNavigationVC
         self.window?.makeKeyAndVisible()
@@ -51,7 +54,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
