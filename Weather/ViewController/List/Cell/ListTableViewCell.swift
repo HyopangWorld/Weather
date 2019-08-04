@@ -9,19 +9,25 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var areaLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var icoLabel: UILabel!  // 날씨 아이콘
+    @IBOutlet weak var areaLabel: UILabel!  // 지역명
+    @IBOutlet weak var tempLabel: UILabel!  // 현재 온도
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if selected {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goWithIndexMainVC"), object: nil)
+        }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        areaLabel.text = nil
+        icoLabel.text = nil
+        tempLabel.text = nil
+    }
 }

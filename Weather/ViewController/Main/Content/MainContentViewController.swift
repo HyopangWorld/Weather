@@ -23,27 +23,29 @@ class MainContentViewController: UIViewController {
     @IBOutlet weak var curPosLabel: UILabel!
     @IBOutlet weak var curWetLabel: UILabel!
     @IBOutlet weak var curTempLabel: UILabel!
-    
     @IBOutlet weak var totalSummaryLabel: UILabel!  // 날씨 총 요약문
    
     var weatherVO = WeatherVO()
     var currentVO = WeatherCurrentVO()
     var hourlyVOList = Array<WeatherHourlyVO>()
     var dailyVOList = Array<WeatherDailyVO>()
-    
-    var hourlyCollection: WTCollectionPagingView? = nil
-    var detailCollection: WTCollectionView? = nil
     var bgColor: UIColor = UIColor.gray
+    
+    // collectionView
+    var hourlyCollection: WTCollectionPagingView!
+    var detailCollection: WTCollectionView!
+    
+    // 리스트 뷰 정보
+    var areaInfoList = Array<Dictionary<String, Any>>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initMainView()
+        // View 초기 설정
+        self.initView()
     }
     
-    
-    // MARK: - 날씨 정보
-    func initMainView(){
+    func initView(){
         // current View 설정
         setCurrentWeatherView()
 
@@ -75,8 +77,15 @@ class MainContentViewController: UIViewController {
     }
     
     
-    // MARK: - 리스트화면으로 이동
-    @IBAction func listButtonDidTap(_ sender: Any) {
+    // MARK: - 리스트 뷰로 이동
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "goListSegue":
+            let listVC = segue.destination as! ListViewController
+            listVC.areaInfoList = areaInfoList
+        default:
+            break
+        }
     }
     
     
@@ -84,9 +93,10 @@ class MainContentViewController: UIViewController {
     func setCurrentWeatherView(){
         curPosLabel.text = weatherVO.timezone
         curWetLabel.text = currentVO.summary
-        curTempLabel.text = "\(currentVO.temperature!)˚"
+        curTempLabel.text = "\(WTFormat().toTemp(currentVO.temperature!))˚"
         totalSummaryLabel.text = "주간 : 날씨는 \(currentVO.weekSummary!)"
     }
+    
     
     // MARK: - 날씨 별 배경 색 설정
     func setColorWithWeather(_ weatherColor: UIColor){

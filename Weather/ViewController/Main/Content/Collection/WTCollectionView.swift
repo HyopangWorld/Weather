@@ -12,15 +12,17 @@ import Foundation
 import UIKit
 
 class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     // TableView 생성 Type
     var type: CollectionViewType? = nil
+    
+    // cell의 데이터 리스트
+    var dataList = Array<Any>()
     
     var collection: UICollectionView? = nil
     var backgroundColor: UIColor? = nil
     var cellWidth: CGFloat = 0
     var cellHeight: CGFloat = 0
-    
-    var dataList = Array<Any>()
     
     init(type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor, dataList: Array<Any>){
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +31,7 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
         self.backgroundColor = backgroundColor
         self.dataList = dataList
         
+        // View 초기 설정
         initView()
     }
     
@@ -71,7 +74,7 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
             cell.timeLabel.text = "\(data.hourlyTime!)시"
             cell.icoLabel.text = data.icon!.getWeatherIcon()
             cell.humLabel.text = "\(data.humidity!)"
-            cell.tempLabel.text = "\(data.temperature!)˚"
+            cell.tempLabel.text = "\(WTFormat().toTemp(data.temperature!))˚"
             cell.backgroundColor = backgroundColor
             
             return cell

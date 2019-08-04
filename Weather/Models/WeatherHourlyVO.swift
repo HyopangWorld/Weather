@@ -11,8 +11,8 @@
 import Foundation
 
 class WeatherHourlyVO: NSObject {
-    var hourlyTime: String?
-    var icon: WeatherIcon?
-    var temperature: Int?
-    var humidity: String?
+    var hourlyTime: String?  // 시간 (오전/오후 00시)
+    var icon: WeatherIcon?  // 날씨 아이콘
+    var temperature: Int?  // 온도
+    var humidity: String?  // 습도
 }

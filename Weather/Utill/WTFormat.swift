@@ -12,10 +12,13 @@ import Foundation
 struct WTFormat {
     
     
-    // MARK: - to 섭씨
-    func toCelsius(_ fahrenheit: NSNumber) -> Int {
-        let celsius = round(((fahrenheit.doubleValue) - 32.0) / 1.8)
-        return Int(celsius)
+    // MARK: - to 섭씨 화씨
+    func toTemp(_ fahrenheit: Int) -> Int {
+        var temp = fahrenheit
+        if (UserDefaults.standard.bool(forKey: "isCelsius")){
+            temp = Int(round(Double(fahrenheit - 32) / 1.8))
+        }
+        return temp
     }
     
     
@@ -68,5 +71,13 @@ struct WTFormat {
     // MARK: - to 거리(km)
     func toKmString(_ number: NSNumber) -> String {
         return "\(number.floatValue)km"
+    }
+    
+    
+    // MARK: - to 도시
+    func toCityString(_ string: String) -> String {
+        let str = string.split(separator: "/")
+        
+        return str.count > 1 ? String(str[1]) : string
     }
 }

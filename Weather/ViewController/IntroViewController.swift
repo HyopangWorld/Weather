@@ -53,6 +53,9 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
                                   "logitude" : curLatitude]]
                 , forKey: "areaList")
             
+            // 섭씨 화씨 설정 초기값
+            userDefaults.setValue(true, forKey: "isCelsius")  // 섭씨
+            
             userDefaults.synchronize()
         }
         
@@ -67,7 +70,7 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
         
         // 메인 스토리보드 이동
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-        navigationController?.present(controller, animated: true, completion: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        navigationController?.present(mainVC, animated: true, completion: nil)
     }
 }

@@ -12,6 +12,7 @@ import Foundation
 import UIKit
 
 extension MainContentViewController: UITableViewDataSource, UITableViewDelegate{
+    
     // setting section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dayTableView.rowHeight = 39
@@ -25,8 +26,8 @@ extension MainContentViewController: UITableViewDataSource, UITableViewDelegate{
         
         cell.dayLabel.text = dailyVOList[indexPath.row].dailyTime!.getDayOfWeekString()
         cell.iconLabel.text = dailyVOList[indexPath.row].icon!.getWeatherIcon()
-        cell.minTempLabel.text = "\(dailyVOList[indexPath.row].temperatureMin!)˚"
-        cell.maxTempLabel.text = "\(dailyVOList[indexPath.row].temperatureMax!)˚"
+        cell.minTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMin!))˚"
+        cell.maxTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMax!))˚"
         
         cell.selectionStyle = .none
         cell.backgroundColor = dayTableView.backgroundColor
