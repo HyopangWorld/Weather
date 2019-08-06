@@ -57,27 +57,42 @@ class MainViewController: UIViewController {
             
             let areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
             for area in areaIndex{
-                // 리스트 갯수만큼 순서대로 날씨 데이터 가져오기
-                getWeatherApi(areaList[area] as! Dictionary<String, Any>)
+                // 리스트 갯수만큼 순서대로 날씨 데이터 가져오기 (에러 발생 시 중지)
+                if !getWeatherApi(areaList[area] as! Dictionary<String, Any>) {
+                    return
+                }
             }
         }
     }
     
     
     // MARK: - 날씨데이터 가져오기
-    func getWeatherApi(_ area: Dictionary<String, Any>){
+    func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
+        var result = true
         ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
             let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
             
             self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
-
         }, fail: { err in
-            let alert = UIAlertController(title: "날씨를 확인할 수 없습니다", message: "인터넷에 접속할 수 없습니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .destructive, handler : nil)
-            alert.addAction(okAction)
+            // 기본 데이터 입력
+            self.weatherList.append([
+                "weatherVO" : WeatherVO(),
+                "currentVO" : WeatherCurrentVO(),
+                "dailyVOList" : Array<WeatherDailyVO>(),
+                "hourlyVOList" : Array<WeatherHourlyVO>() ])
             
-            self.present(alert, animated: true, completion: nil)
+            // 장애 뷰로 이동 (root view 전환)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let errVC = storyboard.instantiateViewController(withIdentifier: "ErrorPageViewController")
+            
+            let navigationController = UINavigationController.init(rootViewController: errVC)
+            navigationController.isNavigationBarHidden = true
+            
+            self.present(navigationController, animated: true, completion: nil)
+            
+            result = false
         })
+        return result
     }
 }
 

@@ -13,7 +13,7 @@ import Foundation
 class WeatherVO: NSObject{
     var latitude: Double?  // 요청한 위도
     var logitude: Double?  // 요청한 경도
-    var timezone: String?  // 요청한 지역명
-    var temperature: Int?  // 요청한 지역명
-    var icon: WeatherIcon?  // 요청한 아이콘
+    var timezone: String = "KaKaoPay"  // 요청한 지역명
+    var temperature: Int = 30  // 요청한 온도
+    var icon: WeatherIcon? = .rain // 요청한 아이콘
 }

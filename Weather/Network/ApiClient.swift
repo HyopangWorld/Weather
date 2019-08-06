@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NetworkExtension
 
 
 // MARK: - request를 위한 interface
@@ -14,14 +15,20 @@ public protocol NetworkRequest {
     func request(
         _ url: String,
         success: @escaping (Data) -> Void,
-        fail: @escaping (Error?) -> Void)
+        fail: @escaping (NSError?) -> Void)
 }
 
 
 public class ApiClient: NetworkRequest {
     
-    public func request(_ url: String, success: @escaping (Data) -> Void, fail: @escaping (Error?) -> Void) {
+    public func request(_ url: String, success: @escaping (Data) -> Void, fail: @escaping (NSError?) -> Void) {
         do {
+            // 인터넷 연결 확인
+            let network = NWPath.init()
+            if network.status == NWPathStatus.unsatisfied {
+                print("testtestset: \(network.status)")
+            }
+            
             // url 생성
             guard let apiURI = URL(string:"\(WTUrl.prefixUrl)/\(url)") else {
                 print("Invalid API URL)")
@@ -40,7 +47,8 @@ public class ApiClient: NetworkRequest {
             
         } catch let err as NSError {
             // error 처리
-            print(err.localizedDescription)
+            NSLog(err.localizedDescription)
+            
             fail(err)
         }
     }

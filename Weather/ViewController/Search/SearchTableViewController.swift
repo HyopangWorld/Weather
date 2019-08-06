@@ -53,7 +53,6 @@ class SearchTableViewController: UITableViewController {
     
     // MARK: - 리스트 화면으로 이동한다. (새로운 리스트 업데이트)
     func goListVC(){
-        searchController.isActive = false
         let storyboard = self.storyboard!
         let listVC = storyboard.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
         

@@ -71,10 +71,10 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TimeCollectionViewCell
             let data = dataList[indexPath.row] as! WeatherHourlyVO
             
-            cell.timeLabel.text = "\(data.hourlyTime!)시"
-            cell.icoLabel.text = data.icon!.getWeatherIcon()
-            cell.humLabel.text = "\(data.humidity!)"
-            cell.tempLabel.text = "\(WTFormat().toTemp(data.temperature!))˚"
+            cell.timeLabel.text = "\(data.hourlyTime)시"
+            cell.icoLabel.text = data.icon.getWeatherIcon()
+            cell.humLabel.text = "\(data.humidity)"
+            cell.tempLabel.text = "\(WTFormat().toTemp(data.temperature))˚"
             cell.backgroundColor = backgroundColor
             
             return cell

@@ -105,12 +105,12 @@ class MainContentViewController: UIViewController {
     func setCurrentWeatherView(){
         curPosLabel.text = currentVO.timezone
         curWetLabel.text = currentVO.summary
-        curTempLabel.text = "\(WTFormat().toTemp(currentVO.temperature!))˚"
-        curTimeLabel.text = currentVO.currentTime?.getDayOfWeekString()
-        maxTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMax!))˚"
-        minTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMin!))˚"
+        curTempLabel.text = "\(WTFormat().toTemp(currentVO.temperature))˚"
+        curTimeLabel.text = currentVO.currentTime.getDayOfWeekString()
+        maxTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMax))˚"
+        minTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMin))˚"
         
-        totalSummaryLabel.text = "주간 : 날씨는 \(currentVO.weekSummary!)"
+        totalSummaryLabel.text = "주간 : 날씨는 \(currentVO.weekSummary)"
     }
     
     

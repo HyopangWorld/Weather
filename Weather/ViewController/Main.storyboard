@@ -328,7 +328,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8go-4K-cLN" firstAttribute="leading" secondItem="3E5-tL-XyH" secondAttribute="leading" id="8xi-eY-83B"/>
                             <constraint firstItem="KVN-m7-2IM" firstAttribute="bottom" secondItem="Cak-8c-ZoX" secondAttribute="bottom" id="E4q-0q-Pzp"/>
@@ -371,6 +371,51 @@
             </objects>
             <point key="canvasLocation" x="738" y="82"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="HtL-Zn-F6T">
+            <objects>
+                <viewController storyboardIdentifier="ErrorPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qmK-0U-EMm" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="12k-eF-WDN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚠️ 네트워크 오류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-9q-fel">
+                                <rect key="frame" x="105.66666666666667" y="430" width="202.66666666666663" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="네트워크 연결을 확인해 주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C20-zV-GYL" userLabel="errLabel">
+                                <rect key="frame" x="10" y="516" width="394" height="31.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CS-uT-hER">
+                                <rect key="frame" x="153" y="260" width="108" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2CS-uT-hER" firstAttribute="centerX" secondItem="12k-eF-WDN" secondAttribute="centerX" id="8if-RJ-i95"/>
+                            <constraint firstItem="mZc-9q-fel" firstAttribute="centerY" secondItem="12k-eF-WDN" secondAttribute="centerY" id="F0L-sv-0L4"/>
+                            <constraint firstItem="C20-zV-GYL" firstAttribute="leading" secondItem="TBB-Eg-POg" secondAttribute="leading" constant="10" id="JJy-lg-nig"/>
+                            <constraint firstItem="C20-zV-GYL" firstAttribute="top" secondItem="mZc-9q-fel" secondAttribute="bottom" constant="50" id="L2G-F9-wJ5"/>
+                            <constraint firstItem="mZc-9q-fel" firstAttribute="centerX" secondItem="12k-eF-WDN" secondAttribute="centerX" id="S9Z-IE-PHL"/>
+                            <constraint firstItem="TBB-Eg-POg" firstAttribute="trailing" secondItem="C20-zV-GYL" secondAttribute="trailing" constant="10" id="dce-ea-SS4"/>
+                            <constraint firstItem="C20-zV-GYL" firstAttribute="centerX" secondItem="12k-eF-WDN" secondAttribute="centerX" id="iix-O4-frb"/>
+                            <constraint firstItem="mZc-9q-fel" firstAttribute="top" secondItem="2CS-uT-hER" secondAttribute="bottom" constant="50" id="rbN-V5-pir"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TBB-Eg-POg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pC7-74-4Gn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="793"/>
+        </scene>
         <!--List View Controller-->
         <scene sceneID="qeN-KP-HEg">
             <objects>
@@ -381,7 +426,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6rb-c2-6zj" userLabel="tableView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="738"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.16862745100000001" alpha="0.79799871575342463" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUB-jQ-6JJ" userLabel="footerView">
                                 <rect key="frame" x="0.0" y="782" width="414" height="80"/>
@@ -437,7 +482,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21563202970000001" green="0.21766542019999999" blue="0.2252371239" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="mGO-ro-dFu" firstAttribute="centerY" secondItem="ZUB-jQ-6JJ" secondAttribute="centerY" id="J1x-hW-aw3"/>
                                     <constraint firstItem="kXo-WF-7YJ" firstAttribute="centerY" secondItem="ZUB-jQ-6JJ" secondAttribute="centerY" id="L91-VK-iBR"/>
@@ -451,7 +496,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6rb-c2-6zj" firstAttribute="trailing" secondItem="2ZP-xh-20c" secondAttribute="trailing" id="EyM-44-Adl"/>
                             <constraint firstItem="6rb-c2-6zj" firstAttribute="leading" secondItem="2ZP-xh-20c" secondAttribute="leading" id="KWR-SR-Vhh"/>

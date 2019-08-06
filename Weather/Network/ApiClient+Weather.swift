@@ -29,8 +29,8 @@ extension ApiClient {
             
             // 현재 날씨
             currentVO.timezone = timezone ?? "▼ " + WTFormat().toCityString(weather["timezone"] as! String)
-            currentVO.summary = currently["summary"] as? String
-            currentVO.icon = WeatherIcon(rawValue: (currently["icon"] as? String)!)
+            currentVO.summary = currently["summary"] as! String
+            currentVO.icon = WeatherIcon(rawValue: (currently["icon"] as! String))!
             currentVO.temperature = Int(round((currently["temperature"] as! NSNumber).doubleValue)) // 현재 온도
             currentVO.humidity = WTFormat().toPercentString(currently["humidity"] as! NSNumber) // 습도
             currentVO.pressure = WTFormat().toHPaString(currently["pressure"] as! NSNumber) // 기압
@@ -52,11 +52,11 @@ extension ApiClient {
                     currentVO.sunriseTime =  WTFormat().toHourMinute(dailyList["sunriseTime"] as! NSNumber)
                     currentVO.temperatureMin = Int(round((dailyList["temperatureMin"] as! NSNumber).doubleValue))
                     currentVO.temperatureMax = Int(round((dailyList["temperatureMax"] as! NSNumber).doubleValue))
-                    currentVO.weekSummary = daily["summary"] as? String
+                    currentVO.weekSummary = daily["summary"] as! String
                 }
                 
                 dailyVO.dailyTime =  WTFormat().toDayOfWeek(dailyList["time"] as! NSNumber)
-                dailyVO.icon = WeatherIcon(rawValue: (dailyList["icon"] as? String)!)
+                dailyVO.icon = WeatherIcon(rawValue: (dailyList["icon"] as! String))!
                 dailyVO.temperatureMin = Int(round((dailyList["temperatureMin"] as! NSNumber).doubleValue))
                 dailyVO.temperatureMax = Int(round((dailyList["temperatureMax"] as! NSNumber).doubleValue))
                 
@@ -73,7 +73,7 @@ extension ApiClient {
                 let hourlyVO = WeatherHourlyVO()
                 
                 hourlyVO.hourlyTime = WTFormat().toHour(hourlyList["time"] as! NSNumber)
-                hourlyVO.icon = WeatherIcon(rawValue: (hourlyList["icon"] as? String)!)
+                hourlyVO.icon = WeatherIcon(rawValue: (hourlyList["icon"] as! String))!
                 hourlyVO.temperature = Int(round((hourlyList["temperature"] as! NSNumber).doubleValue))
                 hourlyVO.humidity = WTFormat().toPercentString(hourlyList["humidity"] as! NSNumber) // 습도
                 

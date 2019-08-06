@@ -30,18 +30,16 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if( status == .authorizedWhenInUse ){
-            // 좌표값 가져오기
-            if let coor = locationManager!.location?.coordinate{
-                curLatitude = coor.latitude
-                curLongitude = coor.longitude
-            }
-            
-            // 화면 이동
-            setDataUserDeafaults()
-            // 화면 이동
-            presentMainVC()
+        // 좌표값 가져오기
+        if let coor = locationManager!.location?.coordinate{
+            curLatitude = coor.latitude
+            curLongitude = coor.longitude
         }
+        
+        // 화면 이동
+        setDataUserDeafaults()
+        // 화면 이동
+        presentMainVC()
     }
     
     
@@ -79,14 +77,11 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
     
     // MARK: - 메인화면으로 이동
     func presentMainVC(){
-        let changeVC = UINavigationController.init(rootViewController: MainViewController())
-        changeVC.isNavigationBarHidden = true
-        
         // 메인 스토리보드 이동
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         
-        let navigationController = UINavigationController(rootViewController: mainVC)
+        let navigationController = UINavigationController.init(rootViewController: mainVC)
         navigationController.isNavigationBarHidden = true
         
         self.present(navigationController, animated: true, completion: nil)

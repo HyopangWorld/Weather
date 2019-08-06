@@ -24,10 +24,10 @@ extension MainContentViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayTableViewCell
         
-        cell.dayLabel.text = dailyVOList[indexPath.row].dailyTime!.getDayOfWeekString()
-        cell.iconLabel.text = dailyVOList[indexPath.row].icon!.getWeatherIcon()
-        cell.minTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMin!))˚"
-        cell.maxTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMax!))˚"
+        cell.dayLabel.text = dailyVOList[indexPath.row].dailyTime.getDayOfWeekString()
+        cell.iconLabel.text = dailyVOList[indexPath.row].icon.getWeatherIcon()
+        cell.minTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMin))˚"
+        cell.maxTempLabel.text = "\(WTFormat().toTemp(dailyVOList[indexPath.row].temperatureMax))˚"
         
         cell.selectionStyle = .none
         cell.backgroundColor = dayTableView.backgroundColor
