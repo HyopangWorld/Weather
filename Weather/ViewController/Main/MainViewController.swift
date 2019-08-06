@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     }
     
     
-    // MARK: - 데이터 생성 여부에 따라 api를 재호출한다.
+    // MARK: - ListView 에게 전달 받은 데이터 없을 경우 api를 재호출한다.
     func updateWeather(){
         if weatherList == nil {
             weatherList = Array<Dictionary<String, Any>>()
@@ -79,19 +79,6 @@ class MainViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         })
     }
-    
-    
-    // MARK: - 리스트 뷰로 이동
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "goListSegue":
-            let listVC = segue.destination as! ListViewController
-            listVC.weatherList = Array<Dictionary<String, Any>>()
-            listVC.weatherList = weatherList
-        default:
-            break
-        }
-    }
 }
 
 
@@ -100,17 +87,17 @@ extension MainViewController: UIPageViewControllerDataSource {
     
     // current VC
     func viewControllerAtIndex (index : Int) -> MainContentViewController {
-        let vc : MainContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! MainContentViewController
+        let contentVC : MainContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! MainContentViewController
         self.index = index
         
         let weather = weatherList[index]
-        vc.currentVO = weather["currentVO"] as! WeatherCurrentVO
-        vc.dailyVOList = weather["dailyVOList"] as! [WeatherDailyVO]
-        vc.hourlyVOList = weather["hourlyVOList"] as! [WeatherHourlyVO]
-        vc.pageCnt = weatherList.count
-        vc.curPageCnt = index
+        contentVC.currentVO = weather["currentVO"] as! WeatherCurrentVO
+        contentVC.dailyVOList = weather["dailyVOList"] as! [WeatherDailyVO]
+        contentVC.hourlyVOList = weather["hourlyVOList"] as! [WeatherHourlyVO]
+        contentVC.pageCnt = weatherList.count
+        contentVC.curPageCnt = index
         
-        return vc
+        return contentVC
     }
     
     // before VC

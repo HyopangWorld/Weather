@@ -16,7 +16,8 @@ class ListViewController: UIViewController{
     var areaList: Dictionary<String,Any>!  // 지역 리스트
     var weatherList: Array<Dictionary<String, Any>>!  // 날씨 리스트
     
-    @IBAction func backListVC(segue : UIStoryboardSegue) {}
+    @IBAction func backListVC(segue : UIStoryboardSegue) {} // SearchView -> ListView BackButton(닫기)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,11 @@ class ListViewController: UIViewController{
         tableView.register(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCell")
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
     
     
-    // MARK: - 데이터 생성 여부에 따라 api를 재호출한다.
+    // MARK: - 넘겨 받은 데이터가 없는 경우(새로운 데이터 추가) api를 업데이트한다.
     func updateWeather(){
         if weatherList == nil {
             weatherList = Array<Dictionary<String, Any>>()
@@ -166,6 +168,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         mainVC.weatherList = self.weatherList
         mainVC.startIndex = indexPath.row
         
-        self.present(mainVC, animated: true, completion: nil)
+        // pop MainView
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        navigationController.isNavigationBarHidden = true
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
 }

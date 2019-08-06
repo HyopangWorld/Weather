@@ -54,6 +54,7 @@ class SearchTableViewController: UITableViewController {
         searchController.isActive = false
         let storyboard = self.storyboard!
         let listVC = storyboard.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+        
         self.present(listVC, animated: true, completion: nil)
     }
     

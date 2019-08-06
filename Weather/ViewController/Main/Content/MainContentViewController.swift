@@ -85,6 +85,21 @@ class MainContentViewController: UIViewController {
         
     }
     
+    // MARK: - 리스트 뷰로 이동
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "goListSegue":
+            let listVC = segue.destination as! ListViewController
+            for vc in navigationController!.viewControllers {
+                if vc is MainViewController{
+                    listVC.weatherList = (vc as! MainViewController).weatherList
+                }
+            }
+        default:
+            break
+        }
+    }
+    
     
     // MARK: - 현재 날씨 뷰 설정
     func setCurrentWeatherView(){

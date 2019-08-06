@@ -85,6 +85,10 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
         // 메인 스토리보드 이동
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-        navigationController?.present(mainVC, animated: true, completion: nil)
+        
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        navigationController.isNavigationBarHidden = true
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
