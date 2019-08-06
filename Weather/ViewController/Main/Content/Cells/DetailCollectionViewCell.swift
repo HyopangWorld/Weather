@@ -6,15 +6,16 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+// 날씨 상세 정보 collection view cell
+
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!  // 항목 명
+    @IBOutlet weak var infoLabel: UILabel!   // 정보
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func prepareForReuse() {

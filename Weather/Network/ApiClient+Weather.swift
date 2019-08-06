@@ -6,9 +6,17 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 날씨 호출 API Util
+ */
+
 import Foundation
 
+
 extension ApiClient {
+    
+    
+    // MARK: - 날씨 API 호출 response 데이터 처리
     func getWeatherList(weather: NSDictionary, timezone: String?) -> Dictionary<String, Any> {
         do {
             let weatherVO = WeatherVO()
@@ -29,7 +37,7 @@ extension ApiClient {
             
             // 현재 날씨
             currentVO.timezone = timezone ?? "▼ " + WTFormat().toCityString(weather["timezone"] as! String)
-            currentVO.summary = currently["summary"] as! String
+            currentVO.summary = currently["summary"] as? String
             currentVO.icon = WeatherIcon(rawValue: (currently["icon"] as! String))!
             currentVO.temperature = Int(round((currently["temperature"] as! NSNumber).doubleValue)) // 현재 온도
             currentVO.humidity = WTFormat().toPercentString(currently["humidity"] as! NSNumber) // 습도
@@ -52,7 +60,7 @@ extension ApiClient {
                     currentVO.sunriseTime =  WTFormat().toHourMinute(dailyList["sunriseTime"] as! NSNumber)
                     currentVO.temperatureMin = Int(round((dailyList["temperatureMin"] as! NSNumber).doubleValue))
                     currentVO.temperatureMax = Int(round((dailyList["temperatureMax"] as! NSNumber).doubleValue))
-                    currentVO.weekSummary = daily["summary"] as! String
+                    currentVO.weekSummary = daily["summary"] as? String
                 }
                 
                 dailyVO.dailyTime =  WTFormat().toDayOfWeek(dailyList["time"] as! NSNumber)

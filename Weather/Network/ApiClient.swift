@@ -6,6 +6,10 @@
 //  Copyright © 2019 김효원. All rights reserved.
 //
 
+/*
+ * API interface
+ */
+
 import Foundation
 import NetworkExtension
 
@@ -19,16 +23,11 @@ public protocol NetworkRequest {
 }
 
 
+// MARK: - request 메서드 (공통)
 public class ApiClient: NetworkRequest {
     
     public func request(_ url: String, success: @escaping (Data) -> Void, fail: @escaping (NSError?) -> Void) {
         do {
-            // 인터넷 연결 확인
-            let network = NWPath.init()
-            if network.status == NWPathStatus.unsatisfied {
-                print("testtestset: \(network.status)")
-            }
-            
             // url 생성
             guard let apiURI = URL(string:"\(WTUrl.prefixUrl)/\(url)") else {
                 print("Invalid API URL)")
@@ -40,7 +39,7 @@ public class ApiClient: NetworkRequest {
             let data = try Data(contentsOf: apiURI)
             
             // 로그 출력
-            let log = NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "" //NSString으로 인코딩
+            let log = NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "" // NSString으로 인코딩
             NSLog("==========> [Response] Data = \(log)")
             
             success(data)

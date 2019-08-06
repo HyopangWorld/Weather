@@ -6,9 +6,13 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * Data Format Util
+ */
+
 import Foundation
 
-// JSON Data Formatter
+
 struct WTFormat {
     
     
@@ -38,7 +42,7 @@ struct WTFormat {
         let date = Date(timeIntervalSince1970: (numberDay).doubleValue)
         let dateComp = cal.dateComponents([.hour], from: date)
         
-        let hour = (dateComp.hour! > 12 ? "오후 \(dateComp.hour! - 12)" : "오전 \(dateComp.hour!)")
+        let hour = (dateComp.hour! > 12 ? "오후 \(dateComp.hour! - 12)시" : "오전 \(dateComp.hour!)시")
         
         return hour
     }

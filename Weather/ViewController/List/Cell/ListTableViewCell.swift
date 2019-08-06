@@ -6,10 +6,14 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 지역 리스트 tableView cell
+ */
+
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-    @IBOutlet weak var icoLabel: UILabel!  // 날씨 아이콘
+    @IBOutlet weak var icoLabel: UILabel!   // 날씨 아이콘
     @IBOutlet weak var areaLabel: UILabel!  // 지역명
     @IBOutlet weak var tempLabel: UILabel!  // 현재 온도
     

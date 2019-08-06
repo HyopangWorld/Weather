@@ -6,23 +6,24 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 요일 별 날씨 table view cell
+ */
+
 import UIKit
 
 class DayTableViewCell: UITableViewCell {
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var iconLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!      // 요일
+    @IBOutlet weak var iconLabel: UILabel!     // 날씨 아이콘
+    @IBOutlet weak var maxTempLabel: UILabel!  // 최고기온
+    @IBOutlet weak var minTempLabel: UILabel!  // 최저기온
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override func prepareForReuse() {

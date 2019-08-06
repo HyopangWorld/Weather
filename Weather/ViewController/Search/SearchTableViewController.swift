@@ -6,17 +6,25 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 지역 검색 VC
+ */
+
 import Foundation
 import UIKit
 import MapKit
 
 class SearchTableViewController: UITableViewController {
-    var searchController = UISearchController()
+    // searchBar custom
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var cancleBtn: UIButton!
+    @IBOutlet weak var cancleBtn: UIButton!  // 닫기 버튼
     
-    var matchingItems : [MKMapItem] = []
+    var searchController = UISearchController()
+    
+    var matchingItems : [MKMapItem] = []  // 검색 결과 데이터
+    
+    var weatherList: Array<Dictionary<String, Any>>!  // 날씨 리스트
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +59,51 @@ class SearchTableViewController: UITableViewController {
     }
     
     
-    // MARK: - 리스트 화면으로 이동한다. (새로운 리스트 업데이트)
+    // MARK: - 날씨데이터 가져오기 (새로운 리스트 업데이트)
+    func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
+        var result = true
+        ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
+            
+            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
+            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
+            
+        }, fail: { err in
+            
+            // 기본 데이터 입력
+            self.weatherList.append([
+                "weatherVO" : WeatherVO(),
+                "currentVO" : WeatherCurrentVO(),
+                "dailyVOList" : Array<WeatherDailyVO>(),
+                "hourlyVOList" : Array<WeatherHourlyVO>() ])
+            
+            // 장애 뷰로 이동 (root view 전환)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let errVC = storyboard.instantiateViewController(withIdentifier: "ErrorPageViewController")
+            
+            let navigationController = UINavigationController.init(rootViewController: errVC)
+            navigationController.isNavigationBarHidden = true
+            
+            self.present(navigationController, animated: true, completion: nil)
+            
+            result = false
+            
+        })
+        
+        return result
+    }
+    
+    
+    // MARK: - 리스트 화면으로 이동한다.
     func goListVC(){
         let storyboard = self.storyboard!
         let listVC = storyboard.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+        listVC.weatherList = self.weatherList
         
-        self.present(listVC, animated: true, completion: nil)
+        // pop ListView
+        let navigationController = UINavigationController(rootViewController: listVC)
+        navigationController.isNavigationBarHidden = true
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
     
 }
@@ -72,12 +119,15 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             return
         }
         
+        // 검색창이 빈 경우 결과 테이블 지우기
         if searchBarText == "" {
             self.matchingItems = []
             self.tableView.reloadData()
+            
             return
         }
         
+        //MK 요청
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         
@@ -89,6 +139,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
                 
                 return
             }
+            
             self.matchingItems = response.mapItems
             self.filterSearchResults()
         
@@ -104,20 +155,24 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             guard item.placemark.administrativeArea != nil else {
                 matchingItems.remove(at: count)
                 count -= 1
+                
                 return
             }
             if (count < matchingItems.count){ count += 1 }
         }
     }
     
+    
+    //MARK: - 취소 누를 경우 결과 테이블 refresh
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         matchingItems = []
         tableView.reloadData()
     }
+    
 }
 
 
-// MARK: - 검색 결과 테이블 뷰
+// MARK: - 검색 결과 테이블 뷰 cell
 extension SearchTableViewController {
     
     // setting section
@@ -144,6 +199,10 @@ extension SearchTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as! SearchTableViewCell
         
+        // 검색 화면 비활성화
+        searchController.isActive = false
+        
+        // 지역 정보 저장
         let userDefaults = UserDefaults.standard
         if var areaList = userDefaults.dictionary(forKey: "areaList") {
             areaList.updateValue([
@@ -157,14 +216,23 @@ extension SearchTableViewController {
         
         // index 순서 저장
         var areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
-        // 중복 제거
-        if areaIndex.firstIndex(of: selectedCell.timezone!) == nil {
+        if areaIndex.firstIndex(of: selectedCell.timezone!) == nil {   // 중복 제거
             areaIndex.append(selectedCell.timezone!)
             userDefaults.set(areaIndex, forKey: "areaIndex")
         }
         
         userDefaults.synchronize()
         
-        self.goListVC()
+        // 날씨 리스트 업데이트 추가 (api 호출)
+        let isSuccess = getWeatherApi([
+            "timezone" : selectedCell.timezone!,
+            "latitude" : selectedCell.latitude!,
+            "logitude" : selectedCell.longitude!])
+        
+        // 리스트로 이동
+        if isSuccess {
+            self.goListVC()
+        }
     }
+    
 }

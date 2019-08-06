@@ -6,14 +6,16 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
-// 날씨 기본 파라미터
+/*
+ * 날씨 기본 파라미터 VO
+ */
 
 import Foundation
 
 class WeatherVO: NSObject{
-    var latitude: Double?  // 요청한 위도
-    var logitude: Double?  // 요청한 경도
-    var timezone: String = "KaKaoPay"  // 요청한 지역명
-    var temperature: Int = 30  // 요청한 온도
-    var icon: WeatherIcon? = .rain // 요청한 아이콘
+    var latitude: Double?                // 요청한 위도
+    var logitude: Double?                // 요청한 경도
+    var timezone: String? = "Seoul"      // 요청한 지역명
+    var temperature: Int? = 30           // 요청한 온도
+    var icon: WeatherIcon? = .rain       // 요청한 아이콘
 }

@@ -6,17 +6,21 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 현재 위치 및 지역 날씨를 보여주는 Main VC
+ */
+
 import UIKit
 
 class MainViewController: UIViewController {
-    var mainPageVC : UIPageViewController!
+    var mainPageVC : UIPageViewController! // page vc
+    var viewControllers: NSArray!          // page content views array
     
-    var areaList: Dictionary<String,Any>!  // 지역 리스트
+    var areaList: Dictionary<String,Any>!             // 지역 리스트
     var weatherList: Array<Dictionary<String, Any>>!  // 날씨 리스트
-    var viewControllers: NSArray!
     
     var startIndex: Int = 0  // 페이지 뷰 시작 인덱스
-    var index: Int = 0  // 현재 인덱스
+    var index: Int = 0       // 현재 인덱스
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +32,11 @@ class MainViewController: UIViewController {
         initView()
     }
     
-    
-    // MARK: - init view
     func initView(){
-        // Page View storyBoard와 연결
         self.mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
         self.mainPageVC.dataSource = self
         
+        // 시작 index 설정
         let startVC = self.viewControllerAtIndex(index: startIndex) as MainContentViewController
         viewControllers = NSArray(object: startVC)
         
@@ -46,16 +48,17 @@ class MainViewController: UIViewController {
     }
     
     
-    // MARK: - ListView 에게 전달 받은 데이터 없을 경우 api를 재호출한다.
+    // MARK: - 전달 받은 데이터가 없을 경우 api를 재호출한다.
     func updateWeather(){
+        
+        // Area List 가져오기
+        let userDefaults = UserDefaults.standard
+        areaList = userDefaults.dictionary(forKey: "areaList")!
+        let areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
+        
         if weatherList == nil {
             weatherList = Array<Dictionary<String, Any>>()
             
-            // Area List 가져오기
-            let userDefaults = UserDefaults.standard
-            areaList = userDefaults.dictionary(forKey: "areaList")!
-            
-            let areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
             for area in areaIndex{
                 // 리스트 갯수만큼 순서대로 날씨 데이터 가져오기 (에러 발생 시 중지)
                 if !getWeatherApi(areaList[area] as! Dictionary<String, Any>) {
@@ -69,10 +72,12 @@ class MainViewController: UIViewController {
     // MARK: - 날씨데이터 가져오기
     func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
         var result = true
+        
         ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
-            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
             
+            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
             self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
+            
         }, fail: { err in
             // 기본 데이터 입력
             self.weatherList.append([
@@ -92,6 +97,7 @@ class MainViewController: UIViewController {
             
             result = false
         })
+        
         return result
     }
 }

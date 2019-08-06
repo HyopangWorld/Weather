@@ -6,13 +6,12 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * Enum
+ */
+
 import Foundation
-
-
-// MARK: - TableView type
-enum TableViewType: Int {
-    case day = 0  // 일별 날씨 Table
-}
+import UIKit
 
 
 // MARK: - CollectionView type
@@ -97,6 +96,25 @@ enum WeatherIcon: String {
             return "⛈"
         case .tornado:
             return "🌪"
+        }
+    }
+    
+    
+    // MARK: - icon에 따른 배경 이미지
+    func getBackgroundImg() -> UIImage {
+        switch self {
+        case .clear_day, .clear_night:
+            return UIImage(named: "clear.png")!
+        case .rain, .thunderstorm, .tornado, .hail:
+            return UIImage(named: "rainy.png")!
+        case .snow, .sleet:
+            return UIImage(named: "snow.png")!
+        case .wind, .cloudy:
+            return UIImage(named: "cloudy.png")!
+        case .partly_cloudy_day, .partly_cloudy_night:
+            return UIImage(named: "cloudy.png")!
+        case .fog:
+            return UIImage(named: "fog.png")!
         }
     }
 }

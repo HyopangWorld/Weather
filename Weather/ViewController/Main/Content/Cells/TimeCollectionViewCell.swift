@@ -6,17 +6,20 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 시간 별 날씨 collection view cell
+ */
+
 import UIKit
 
 class TimeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!  // 시간
     @IBOutlet weak var humLabel: UILabel!   // 습도
     @IBOutlet weak var icoLabel: UILabel!   // icon
-    @IBOutlet weak var tempLabel: UILabel!   // 온도
+    @IBOutlet weak var tempLabel: UILabel!  // 온도
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func prepareForReuse() {

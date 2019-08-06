@@ -6,14 +6,17 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
-// 현재 위치 정보를 얻어오기 위한 Intro
+/*
+ * 현재 위치 정보를 얻어오기 위한 Intro
+ */
 
 import UIKit
 import CoreLocation
 
-class IntroViewController: UIViewController, CLLocationManagerDelegate{
+class IntroViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager: CLLocationManager?
+    
     // 좌표 defaults, 카카오페이
     var curLatitude = 37.4790986
     var curLongitude = 126.8754323
@@ -27,18 +30,17 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
         locationManager?.requestWhenInUseAuthorization() // 사용자 권한 요청
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
         // 좌표값 가져오기
         if let coor = locationManager!.location?.coordinate{
             curLatitude = coor.latitude
             curLongitude = coor.longitude
         }
         
-        // 화면 이동
+        // 정보 저장
         setDataUserDeafaults()
-        // 화면 이동
+        
+        // 화면 이동 (위치 허용하는 동안 빈 화면이 보이지 않도록)
         presentMainVC()
     }
     
@@ -54,6 +56,7 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
                 ], forKey: "curLocation")
             
             userDefaults.set(areaList, forKey: "areaList")
+            
         } else {
             // 초기값 저장
             userDefaults.setValue([
@@ -64,10 +67,9 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
             // 섭씨 화씨 설정 초기값
             userDefaults.setValue(true, forKey: "isCelsius")  // 기본값 섭씨
             
+            // index 순서 저장
             var areaIndex = Array<String>()
             areaIndex.append("curLocation")
-            
-            // index 순서 저장
             userDefaults.setValue(areaIndex, forKey: "areaIndex")
         }
         
@@ -81,6 +83,7 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         
+        // set rootView
         let navigationController = UINavigationController.init(rootViewController: mainVC)
         navigationController.isNavigationBarHidden = true
         

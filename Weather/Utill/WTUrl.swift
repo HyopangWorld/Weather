@@ -6,12 +6,18 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * API URL
+ */
+
 import Foundation
 
 struct WTUrl {
-    static let developerKey = "e953fb03d875d3354d8e97acd7764771"
+    // 고정 URL
+    static let developerKey = "73015d0d22e9c7fddee042376b7ea5ed"
     static let prefixUrl = "https://api.darksky.net/forecast/\(developerKey)"
     
+    // 상세 URL
     struct postFixUrl {
         
         // (currently, hourly, daily), 한글

@@ -6,14 +6,19 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
+/*
+ * 지역 검색 결과 tableView cell
+ */
+
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!  // 검색 결과 라벨
     
-    var timezone: String!
-    var latitude: Double!
-    var longitude: Double!
+    // 검색 결과 데이터 저장
+    var timezone: String!   // 지역명
+    var latitude: Double!   // 위도
+    var longitude: Double!  // 경도
     
     override func awakeFromNib() {
         super.awakeFromNib()

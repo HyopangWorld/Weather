@@ -6,7 +6,9 @@
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
-// CollectionView DataSource, Delegate (Weather Detail View)
+/*
+ * CollectionView DataSource, Delegate (날씨 상세 정보 View)
+ */
 
 import Foundation
 import UIKit
@@ -20,15 +22,13 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
     var dataList = Array<Any>()
     
     var collection: UICollectionView? = nil
-    var backgroundColor: UIColor? = nil
     var cellWidth: CGFloat = 0
     var cellHeight: CGFloat = 0
     
-    init(type: CollectionViewType, collection: UICollectionView, backgroundColor: UIColor, dataList: Array<Any>){
+    init(type: CollectionViewType, collection: UICollectionView, dataList: Array<Any>){
         super.init(nibName: nil, bundle: nil)
         self.type = type
         self.collection = collection
-        self.backgroundColor = backgroundColor
         self.dataList = dataList
         
         // View 초기 설정
@@ -59,8 +59,9 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-    //setting section
+    // setting section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.layer.backgroundColor = UIColor.clear.cgColor
         return dataList.count
     }
     
@@ -71,21 +72,24 @@ class WTCollectionView: UIViewController, UICollectionViewDelegate, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TimeCollectionViewCell
             let data = dataList[indexPath.row] as! WeatherHourlyVO
             
-            cell.timeLabel.text = "\(data.hourlyTime)시"
-            cell.icoLabel.text = data.icon.getWeatherIcon()
-            cell.humLabel.text = "\(data.humidity)"
-            cell.tempLabel.text = "\(WTFormat().toTemp(data.temperature))˚"
-            cell.backgroundColor = backgroundColor
+            cell.timeLabel.text = "\(data.hourlyTime!)"
+            cell.icoLabel.text = data.icon!.getWeatherIcon()
+            cell.humLabel.text = "\(data.humidity!)"
+            cell.tempLabel.text = "\(WTFormat().toTemp(data.temperature!))˚"
             
             return cell
+            
         case .detail? :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath) as! DetailCollectionViewCell
+            
             cell.titleLabel.text = DetailTypeString(rawValue: indexPath.row)?.getDetailTypeString()
             cell.infoLabel.text = "\(dataList[indexPath.row])"
-            cell.backgroundColor = backgroundColor
             
             return cell
-        case .none: break
+            
+        case .none:
+            break
+            
         }
         
         return UICollectionViewCell()
