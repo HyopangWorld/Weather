@@ -1,17 +1,19 @@
 //
-//  ListTableViewCell.swift
+//  SearchTableViewCell.swift
 //  weather
 //
-//  Created by 김효원 on 03/08/2019.
+//  Created by 김효원 on 05/08/2019.
 //  Copyright © 2019 HyowonKim. All rights reserved.
 //
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
-    @IBOutlet weak var icoLabel: UILabel!  // 날씨 아이콘
-    @IBOutlet weak var areaLabel: UILabel!  // 지역명
-    @IBOutlet weak var tempLabel: UILabel!  // 현재 온도
+class SearchTableViewCell: UITableViewCell {
+    @IBOutlet weak var areaLabel: UILabel!
+    
+    var timezone: String!
+    var latitude: Double!
+    var longitude: Double!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +26,8 @@ class ListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         areaLabel.text = nil
-        icoLabel.text = nil
-        tempLabel.text = nil
+        timezone = nil
+        latitude = nil
+        longitude = nil
     }
 }

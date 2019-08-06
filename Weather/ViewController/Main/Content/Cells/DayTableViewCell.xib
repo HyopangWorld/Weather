@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-ZB-CNK" userLabel="iconLabel">
-                        <rect key="frame" x="182.5" y="7.5" width="25" height="24"/>
+                        <rect key="frame" x="160" y="7.5" width="25" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -45,12 +45,12 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="160" id="0Uz-ks-VtW"/>
                     <constraint firstItem="Xy7-3t-6fn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0ee-H7-ThN"/>
-                    <constraint firstItem="CSO-Zb-IgO" firstAttribute="leading" secondItem="rit-qw-8GD" secondAttribute="trailing" constant="30" id="KHp-RB-SNP"/>
-                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Rv1-Za-MEE"/>
                     <constraint firstItem="Xy7-3t-6fn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aZo-1R-Sgj"/>
                     <constraint firstItem="rit-qw-8GD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="elD-Qc-hDa"/>
                     <constraint firstItem="WJ4-ZB-CNK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fj0-Bu-Pv1"/>
+                    <constraint firstAttribute="trailing" secondItem="rit-qw-8GD" secondAttribute="trailing" constant="55" id="h5B-Nw-rTk"/>
                     <constraint firstAttribute="trailing" secondItem="CSO-Zb-IgO" secondAttribute="trailing" id="wHj-FO-Gm9"/>
                     <constraint firstItem="CSO-Zb-IgO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zgN-V9-WZc"/>
                 </constraints>

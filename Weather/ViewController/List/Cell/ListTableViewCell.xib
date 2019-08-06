@@ -19,32 +19,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-5W-fp8" userLabel="icoLabel">
-                        <rect key="frame" x="23" y="10" width="23" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로스엔젤레스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1y-WM-rMG" userLabel="areaLabel">
-                        <rect key="frame" x="23" y="32.5" width="135" height="32"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ok-bz-Aol" userLabel="tempLabel">
                         <rect key="frame" x="316.5" y="4.5" width="92.5" height="66"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로스엔젤레스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1y-WM-rMG" userLabel="areaLabel">
+                        <rect key="frame" x="23" y="10" width="197.5" height="54.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-5W-fp8" userLabel="icoLabel">
+                        <rect key="frame" x="225.5" y="19.5" width="34" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="j1y-WM-rMG" firstAttribute="leading" secondItem="I6o-5W-fp8" secondAttribute="leading" id="AwH-iw-mr0"/>
-                    <constraint firstItem="I6o-5W-fp8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="FOE-qV-hEc"/>
                     <constraint firstAttribute="trailing" secondItem="7ok-bz-Aol" secondAttribute="trailing" constant="5" id="N5M-MJ-3Uu"/>
                     <constraint firstItem="7ok-bz-Aol" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TyY-vX-8Bg"/>
-                    <constraint firstItem="I6o-5W-fp8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="pJ1-oH-ttG"/>
+                    <constraint firstItem="j1y-WM-rMG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xai-Ae-1VY"/>
+                    <constraint firstItem="I6o-5W-fp8" firstAttribute="leading" secondItem="j1y-WM-rMG" secondAttribute="trailing" constant="5" id="hLm-RV-BW3"/>
                     <constraint firstAttribute="bottom" secondItem="j1y-WM-rMG" secondAttribute="bottom" constant="10" id="ppI-mh-W2B"/>
+                    <constraint firstItem="j1y-WM-rMG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="s4d-CH-Pyt"/>
+                    <constraint firstItem="I6o-5W-fp8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yV1-UH-75l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

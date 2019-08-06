@@ -8,101 +8,140 @@
 
 import UIKit
 
-class MainViewController: UIViewController , UIPageViewControllerDataSource {
+class MainViewController: UIViewController {
+    var mainPageVC : UIPageViewController!
     
-    var pageViewController : UIPageViewController!
-    var pageTitles : NSArray!
-    var pageImages : NSArray!
+    var areaList: Dictionary<String,Any>!  // 지역 리스트
+    var weatherList: Array<Dictionary<String, Any>>!  // 날씨 리스트
+    var viewControllers: NSArray!
+    
+    var startIndex: Int = 0  // 페이지 뷰 시작 인덱스
+    var index: Int = 0  // 현재 인덱스
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pageTitles = NSArray(objects: "첫번째 페이지" , "두번째 페이지", "세번째 페이지" , "네번째 페이지", "다섯번째 페이지")
-        self.pageImages = NSArray(objects: "img01" , "img02" , "img03" , "img04" , "img05")
+        // 날씨 정보 가져오기
+        updateWeather()
         
-        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? UIPageViewController
-        
-        self.pageViewController.dataSource = self
-        
-        let startVC = self.viewControllerAtIndex(index: 0) as MainContentViewController
-        let viewControllers = NSArray(object: startVC)
-        
-        self.pageViewController.setViewControllers(viewControllers as? [UIViewController] , direction: .forward, animated: true, completion: nil)
-        self.pageViewController.view.frame = CGRect(x: 0,y: 30,width: self.view.frame.width, height: self.view.frame.height - 100)
-        
-        self.addChild(self.pageViewController)
-        self.view.addSubview(self.pageViewController.view)
-        
+        // view 초기 설정
+        initView()
     }
     
     
-    /**
-     * viewPageController 구성 함수
-     */
+    // MARK: - init view
+    func initView(){
+        // Page View storyBoard와 연결
+        self.mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
+        self.mainPageVC.dataSource = self
+        
+        let startVC = self.viewControllerAtIndex(index: startIndex) as MainContentViewController
+        viewControllers = NSArray(object: startVC)
+        
+        self.mainPageVC.setViewControllers(viewControllers as? [UIViewController] , direction: .forward, animated: true, completion: nil)
+        self.mainPageVC.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width, height: self.view.frame.height)
+        
+        self.addChild(self.mainPageVC)
+        self.view.addSubview(self.mainPageVC.view)
+    }
+    
+    
+    // MARK: - 데이터 생성 여부에 따라 api를 재호출한다.
+    func updateWeather(){
+        if weatherList == nil {
+            weatherList = Array<Dictionary<String, Any>>()
+            
+            // Area List 가져오기
+            let userDefaults = UserDefaults.standard
+            areaList = userDefaults.dictionary(forKey: "areaList")!
+            
+            let areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
+            for area in areaIndex{
+                // 리스트 갯수만큼 순서대로 날씨 데이터 가져오기
+                getWeatherApi(areaList[area] as! Dictionary<String, Any>)
+            }
+        }
+    }
+    
+    
+    // MARK: - 날씨데이터 가져오기
+    func getWeatherApi(_ area: Dictionary<String, Any>){
+        ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
+            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
+            
+            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
+
+        }, fail: { err in
+            let alert = UIAlertController(title: "날씨를 확인할 수 없습니다", message: "인터넷에 접속할 수 없습니다.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .destructive, handler : nil)
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    
+    // MARK: - 리스트 뷰로 이동
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "goListSegue":
+            let listVC = segue.destination as! ListViewController
+            listVC.weatherList = Array<Dictionary<String, Any>>()
+            listVC.weatherList = weatherList
+        default:
+            break
+        }
+    }
+}
+
+
+// MARK: - Page View content set
+extension MainViewController: UIPageViewControllerDataSource {
+    
+    // current VC
     func viewControllerAtIndex (index : Int) -> MainContentViewController {
-        
         let vc : MainContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! MainContentViewController
+        self.index = index
         
+        let weather = weatherList[index]
+        vc.currentVO = weather["currentVO"] as! WeatherCurrentVO
+        vc.dailyVOList = weather["dailyVOList"] as! [WeatherDailyVO]
+        vc.hourlyVOList = weather["hourlyVOList"] as! [WeatherHourlyVO]
+        vc.pageCnt = weatherList.count
+        vc.curPageCnt = index
         
         return vc
     }
     
-    
-    
-    /**
-     * 이전 ViewPageController 구성
-     */
-    func pageViewController(_ pageViewController: UIPageViewController, _ viewControllerBefore: UIViewController) -> UIViewController? {
-        
-        let vc = viewControllerBefore as! MainContentViewController
-        var index = vc.index(ofAccessibilityElement: vc) as Int
-        
-        if( index == 0 || index == NSNotFound) {
+    // before VC
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if( self.index == 0 ) {
             return nil
         }
+        self.index -= 1
         
-        index -= 1
-        
-        return self.viewControllerAtIndex(index: index)
+        return self.viewControllerAtIndex(index: self.index)
     }
     
-    
-    /**
-     * 이후 ViewPageController 구성
-     */
-    func pageViewController(_ pageViewController: UIPageViewController, _ viewControllerBefore: UIViewController) -> UIViewController? {
-        
-        let vc = viewControllerBefore as! MainContentViewController
-        
-        var index = vc.index(ofAccessibilityElement: vc) as Int
-        
-        if( index == NSNotFound) {
+    // after VC
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if( self.index == UserDefaults.standard.dictionary(forKey: "areaList")!.count - 1){
             return nil
         }
+        self.index += 1
         
-        index += 1
-        
-        if (index == self.pageTitles.count) {
-            return nil
-        }
-        
-        return self.viewControllerAtIndex(index: index)
+        return self.viewControllerAtIndex(index: self.index)
     }
     
-    
-    /**
-     * 인디케이터의 총 갯수
-     */
+    // view 갯수
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return self.pageTitles.count
+        return areaList.count
     }
     
     
-    /**
-     * 인디케이터의 시작 포지션
-     */
+    // view 시작 index
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
+        return startIndex
     }
-    
+
 }

@@ -30,11 +30,23 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if let coor = locationManager!.location?.coordinate{
-            curLatitude = coor.latitude
-            curLongitude = coor.longitude
+        if( status == .authorizedWhenInUse ){
+            // 좌표값 가져오기
+            if let coor = locationManager!.location?.coordinate{
+                curLatitude = coor.latitude
+                curLongitude = coor.longitude
+            }
+            
+            // 화면 이동
+            setDataUserDeafaults()
+            // 화면 이동
+            presentMainVC()
         }
-        
+    }
+    
+    
+    // MARK: - UserDeafaults에 값 저장하기
+    func setDataUserDeafaults(){
         // 현재 좌표값 저장
         let userDefaults = UserDefaults.standard
         if var areaList = userDefaults.dictionary(forKey: "areaList") {
@@ -44,22 +56,24 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate{
                 ], forKey: "curLocation")
             
             userDefaults.set(areaList, forKey: "areaList")
-            userDefaults.synchronize()
-            
         } else {
             // 초기값 저장
             userDefaults.setValue([
                 "curLocation" : [ "latitude" : curLatitude,
-                                  "logitude" : curLatitude]]
+                                  "logitude" : curLongitude]]
                 , forKey: "areaList")
             
             // 섭씨 화씨 설정 초기값
-            userDefaults.setValue(true, forKey: "isCelsius")  // 섭씨
+            userDefaults.setValue(true, forKey: "isCelsius")  // 기본값 섭씨
             
-            userDefaults.synchronize()
+            var areaIndex = Array<String>()
+            areaIndex.append("curLocation")
+            
+            // index 순서 저장
+            userDefaults.setValue(areaIndex, forKey: "areaIndex")
         }
         
-        presentMainVC()
+        userDefaults.synchronize()
     }
     
     

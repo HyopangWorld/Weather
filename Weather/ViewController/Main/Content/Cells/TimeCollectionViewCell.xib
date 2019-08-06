@@ -32,13 +32,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⛈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQe-mP-3F7" userLabel="icoLabel">
-                        <rect key="frame" x="32.5" y="58.5" width="45" height="48"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                        <rect key="frame" x="35" y="58.5" width="40" height="42"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbN-pO-4Ji" userLabel="curTempAlignView">
-                        <rect key="frame" x="35" y="116.5" width="40" height="23"/>
+                        <rect key="frame" x="35" y="110.5" width="40" height="23"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-m4-a0Z" userLabel="curTempLabel">
                                 <rect key="frame" x="6" y="0.0" width="32" height="23"/>

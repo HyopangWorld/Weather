@@ -252,11 +252,18 @@
                                             <segue destination="PBF-lL-t1c" kind="show" identifier="goListSegue" id="frA-al-Xgv"/>
                                         </connections>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="e01-Se-bws" userLabel="pageControl">
+                                        <rect key="frame" x="187.66666666666666" y="6.6666666666666288" width="39" height="37"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="e01-Se-bws" firstAttribute="centerY" secondItem="96B-mu-UOX" secondAttribute="centerY" id="84J-RR-wXx"/>
                                     <constraint firstAttribute="height" constant="50" id="8EY-oE-gvR"/>
                                     <constraint firstAttribute="trailing" secondItem="ant-wL-xcZ" secondAttribute="trailing" id="PmE-2K-yhO"/>
+                                    <constraint firstItem="e01-Se-bws" firstAttribute="centerX" secondItem="96B-mu-UOX" secondAttribute="centerX" id="RAq-uZ-9wj"/>
                                     <constraint firstItem="SCA-pi-YT4" firstAttribute="centerY" secondItem="96B-mu-UOX" secondAttribute="centerY" id="SSd-n4-J9T"/>
                                     <constraint firstItem="ant-wL-xcZ" firstAttribute="leading" secondItem="96B-mu-UOX" secondAttribute="leading" id="amd-QO-I1C"/>
                                     <constraint firstAttribute="trailing" secondItem="cvL-z5-pgd" secondAttribute="trailing" constant="23" id="ayd-Gf-mrW"/>
@@ -295,6 +302,7 @@
                         <outlet property="dayTableView" destination="7vH-oe-Swp" id="DvX-kI-pvE"/>
                         <outlet property="detailCollectionView" destination="ipJ-QX-NDZ" id="5yF-Dm-gC3"/>
                         <outlet property="hourlyCollectionView" destination="Vos-cx-AzW" id="Pkc-in-Ivt"/>
+                        <outlet property="pageControl" destination="e01-Se-bws" id="DOq-7H-eLk"/>
                         <outlet property="scrollView" destination="8go-4K-cLN" id="Sr2-Zp-yWd"/>
                         <outlet property="totalSummaryLabel" destination="2SK-JL-8I3" id="tS0-5k-hSy"/>
                         <outlet property="totalSummaryView" destination="vco-Y4-38R" id="zl2-d2-nIV"/>
@@ -365,6 +373,9 @@
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="vUA-Xr-H4a" kind="show" id="m4V-uE-H8L"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21563202970000001" green="0.21766542019999999" blue="0.2252371239" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
@@ -402,6 +413,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhQ-pH-gnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1509" y="84"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="fco-gt-GqJ">
+            <objects>
+                <tableViewController id="vUA-Xr-H4a" customClass="SearchTableViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="obz-ob-oIi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <outlet property="dataSource" destination="vUA-Xr-H4a" id="Aei-n9-mO3"/>
+                            <outlet property="delegate" destination="vUA-Xr-H4a" id="ygq-S5-qBp"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="cancleBtn" destination="KqA-pX-eqD" id="L8L-dF-v9f"/>
+                        <outlet property="headerView" destination="ZQb-mp-Y9w" id="de3-hI-fdp"/>
+                        <outlet property="searchView" destination="ETM-IX-l9a" id="hLC-XO-Lxb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7NT-Lo-cMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fwh-Qy-Cbg" userLabel="Exit" sceneMemberID="exit"/>
+                <view contentMode="scaleToFill" id="ZQb-mp-Y9w" userLabel="headerView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETM-IX-l9a" userLabel="searchView">
+                            <rect key="frame" x="0.0" y="42" width="414" height="43"/>
+                            <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqA-pX-eqD" userLabel="cancleBtn">
+                            <rect key="frame" x="358" y="8" width="32" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="닫기">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <segue destination="fwh-Qy-Cbg" kind="unwind" unwindAction="backListVCWithSegue:" id="JJ8-Sm-cUc"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도시, 우편번호 또는 공항 위치 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-62-ep2">
+                            <rect key="frame" x="111.33333333333333" y="15" width="191.66666666666669" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ETM-IX-l9a" secondAttribute="trailing" id="5Ub-2i-fcT"/>
+                        <constraint firstItem="ETM-IX-l9a" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="42" id="6RL-Ph-OaM"/>
+                        <constraint firstItem="ETM-IX-l9a" firstAttribute="leading" secondItem="ZQb-mp-Y9w" secondAttribute="leading" id="Nlx-C7-kEc"/>
+                        <constraint firstAttribute="trailing" secondItem="KqA-pX-eqD" secondAttribute="trailing" constant="24" id="TMo-MS-phe"/>
+                        <constraint firstItem="jyL-62-ep2" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="15" id="WiN-ao-rRO"/>
+                        <constraint firstAttribute="bottom" secondItem="ETM-IX-l9a" secondAttribute="bottom" constant="5" id="pAn-Wn-vc1"/>
+                        <constraint firstItem="jyL-62-ep2" firstAttribute="centerX" secondItem="ZQb-mp-Y9w" secondAttribute="centerX" id="sOL-ea-KWc"/>
+                        <constraint firstItem="KqA-pX-eqD" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="8" id="y8n-DE-bAi"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="hlY-SP-ZE2"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="2228.985507246377" y="92.410714285714278"/>
         </scene>
     </scenes>
 </document>

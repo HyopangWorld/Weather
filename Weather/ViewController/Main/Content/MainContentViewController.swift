@@ -24,8 +24,12 @@ class MainContentViewController: UIViewController {
     @IBOutlet weak var curWetLabel: UILabel!
     @IBOutlet weak var curTempLabel: UILabel!
     @IBOutlet weak var totalSummaryLabel: UILabel!  // 날씨 총 요약문
-   
-    var weatherVO = WeatherVO()
+    
+    // 하단 page control
+    @IBOutlet weak var pageControl: UIPageControl!
+    var pageCnt: Int!
+    var curPageCnt: Int!
+    
     var currentVO = WeatherCurrentVO()
     var hourlyVOList = Array<WeatherHourlyVO>()
     var dailyVOList = Array<WeatherDailyVO>()
@@ -34,9 +38,6 @@ class MainContentViewController: UIViewController {
     // collectionView
     var hourlyCollection: WTCollectionPagingView!
     var detailCollection: WTCollectionView!
-    
-    // 리스트 뷰 정보
-    var areaInfoList = Array<Dictionary<String, Any>>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,29 +70,22 @@ class MainContentViewController: UIViewController {
         detailCollectionView.register(UINib(nibName: "DetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailCell")
         detailCollectionView.delegate = detailCollection
         detailCollectionView.dataSource = detailCollection
+        
+        //page control 설정
+        pageControl.numberOfPages = pageCnt
+        pageControl.currentPage = curPageCnt
     }
     
     
     // MARK: - 날씨 정보 사이트로 이동
     @IBAction func webButtonDidTap(_ sender: Any) {
-    }
-    
-    
-    // MARK: - 리스트 뷰로 이동
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "goListSegue":
-            let listVC = segue.destination as! ListViewController
-            listVC.areaInfoList = areaInfoList
-        default:
-            break
-        }
+        
     }
     
     
     // MARK: - 현재 날씨 뷰 설정
     func setCurrentWeatherView(){
-        curPosLabel.text = weatherVO.timezone
+        curPosLabel.text = currentVO.timezone
         curWetLabel.text = currentVO.summary
         curTempLabel.text = "\(WTFormat().toTemp(currentVO.temperature!))˚"
         totalSummaryLabel.text = "주간 : 날씨는 \(currentVO.weekSummary!)"
