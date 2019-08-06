@@ -11,7 +11,7 @@
 import Foundation
 
 class WeatherDailyVO: NSObject {
-    var dailyTime: DayOfWeek?  // 시간 (오전/오후 00시)
+    var dailyTime: DayOfWeek?  // 요일
     var icon: WeatherIcon?  // 날씨 아이콘
     var temperatureMin: Int?  // 최고기온
     var temperatureMax: Int?  // 최저기온

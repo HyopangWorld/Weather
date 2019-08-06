@@ -24,6 +24,9 @@ class MainContentViewController: UIViewController {
     @IBOutlet weak var curWetLabel: UILabel!
     @IBOutlet weak var curTempLabel: UILabel!
     @IBOutlet weak var totalSummaryLabel: UILabel!  // 날씨 총 요약문
+    @IBOutlet weak var curTimeLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
     // 하단 page control
     @IBOutlet weak var pageControl: UIPageControl!
@@ -88,6 +91,10 @@ class MainContentViewController: UIViewController {
         curPosLabel.text = currentVO.timezone
         curWetLabel.text = currentVO.summary
         curTempLabel.text = "\(WTFormat().toTemp(currentVO.temperature!))˚"
+        curTimeLabel.text = currentVO.currentTime?.getDayOfWeekString()
+        maxTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMax!))˚"
+        minTempLabel.text = "\(WTFormat().toTemp(currentVO.temperatureMin!))˚"
+        
         totalSummaryLabel.text = "주간 : 날씨는 \(currentVO.weekSummary!)"
     }
     

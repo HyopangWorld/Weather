@@ -47,6 +47,7 @@ extension ApiClient {
                 let dailyVO = WeatherDailyVO()
                 
                 if(dailyVOList.count == 0){
+                    currentVO.currentTime =  WTFormat().toDayOfWeek(dailyList["time"] as! NSNumber)
                     currentVO.sunsetTime =  WTFormat().toHourMinute(dailyList["sunsetTime"] as! NSNumber)
                     currentVO.sunriseTime =  WTFormat().toHourMinute(dailyList["sunriseTime"] as! NSNumber)
                     currentVO.temperatureMin = Int(round((dailyList["temperatureMin"] as! NSNumber).doubleValue))
@@ -54,7 +55,7 @@ extension ApiClient {
                     currentVO.weekSummary = daily["summary"] as? String
                 }
                 
-                dailyVO.dailyTime =  WTFormat().toDayOfWeek(dailyList["sunsetTime"] as! NSNumber)
+                dailyVO.dailyTime =  WTFormat().toDayOfWeek(dailyList["time"] as! NSNumber)
                 dailyVO.icon = WeatherIcon(rawValue: (dailyList["icon"] as? String)!)
                 dailyVO.temperatureMin = Int(round((dailyList["temperatureMin"] as! NSNumber).doubleValue))
                 dailyVO.temperatureMax = Int(round((dailyList["temperatureMax"] as! NSNumber).doubleValue))

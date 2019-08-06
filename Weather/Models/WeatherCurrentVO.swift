@@ -11,6 +11,7 @@
 import Foundation
 
 class WeatherCurrentVO: NSObject {
+    var currentTime: DayOfWeek?  // 요일
     var timezone: String?  // 요청한 지역명
     var summary: String?  // 요약
     var weekSummary: String? // 주간 요약

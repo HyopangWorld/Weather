@@ -26,33 +26,57 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-ZB-CNK" userLabel="iconLabel">
-                        <rect key="frame" x="160" y="7.5" width="25" height="24"/>
+                        <rect key="frame" x="130" y="7.5" width="25" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rit-qw-8GD" userLabel="maxTempLabel">
-                        <rect key="frame" x="310" y="6.5" width="25" height="25.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSO-Zb-IgO" userLabel="minTempLabel">
-                        <rect key="frame" x="365" y="6.5" width="25" height="25.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                        <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCG-3T-BMl" userLabel="maxTempView">
+                        <rect key="frame" x="300" y="6.5" width="35" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rit-qw-8GD" userLabel="maxTempLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25.5" id="1Kx-WL-vwi"/>
+                            <constraint firstItem="rit-qw-8GD" firstAttribute="leading" secondItem="vCG-3T-BMl" secondAttribute="leading" id="E4H-B9-avf"/>
+                            <constraint firstItem="rit-qw-8GD" firstAttribute="centerY" secondItem="vCG-3T-BMl" secondAttribute="centerY" id="NZd-Q7-X82"/>
+                            <constraint firstAttribute="width" constant="35" id="zEh-BP-zYP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DxA-t7-41I"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTq-kX-tEd" userLabel="minTempView">
+                        <rect key="frame" x="355" y="6.5" width="35" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSO-Zb-IgO" userLabel="minTempLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25.5" id="DVp-Yc-bug"/>
+                            <constraint firstItem="CSO-Zb-IgO" firstAttribute="centerY" secondItem="YTq-kX-tEd" secondAttribute="centerY" id="MoG-8j-2Zr"/>
+                            <constraint firstItem="CSO-Zb-IgO" firstAttribute="leading" secondItem="YTq-kX-tEd" secondAttribute="leading" id="Q5H-bf-jVo"/>
+                            <constraint firstAttribute="width" constant="35" id="sKZ-ib-HJ4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cMs-6Y-FaO"/>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="160" id="0Uz-ks-VtW"/>
                     <constraint firstItem="Xy7-3t-6fn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0ee-H7-ThN"/>
+                    <constraint firstAttribute="trailing" secondItem="YTq-kX-tEd" secondAttribute="trailing" id="3at-7N-2JH"/>
+                    <constraint firstItem="vCG-3T-BMl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BE8-m4-pFP"/>
+                    <constraint firstItem="YTq-kX-tEd" firstAttribute="leading" secondItem="vCG-3T-BMl" secondAttribute="trailing" constant="20" id="F9D-7x-U7H"/>
+                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="130" id="aCS-PP-tqS"/>
                     <constraint firstItem="Xy7-3t-6fn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aZo-1R-Sgj"/>
-                    <constraint firstItem="rit-qw-8GD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="elD-Qc-hDa"/>
                     <constraint firstItem="WJ4-ZB-CNK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fj0-Bu-Pv1"/>
-                    <constraint firstAttribute="trailing" secondItem="rit-qw-8GD" secondAttribute="trailing" constant="55" id="h5B-Nw-rTk"/>
-                    <constraint firstAttribute="trailing" secondItem="CSO-Zb-IgO" secondAttribute="trailing" id="wHj-FO-Gm9"/>
-                    <constraint firstItem="CSO-Zb-IgO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zgN-V9-WZc"/>
+                    <constraint firstItem="YTq-kX-tEd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xe4-b8-dMH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -62,6 +86,7 @@
                 <outlet property="maxTempLabel" destination="rit-qw-8GD" id="8bd-vN-YDm"/>
                 <outlet property="minTempLabel" destination="CSO-Zb-IgO" id="NFI-K4-tFR"/>
             </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="132.92410714285714"/>
         </tableViewCell>
     </objects>
 </document>
