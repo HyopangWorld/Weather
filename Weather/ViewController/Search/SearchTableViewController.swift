@@ -34,12 +34,14 @@ class SearchTableViewController: UITableViewController {
         self.definesPresentationContext = true
         
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         
         // 검색 bar 설정
         searchController.searchBar.enablesReturnKeyAutomatically = false
         searchController.searchBar.barStyle = .black
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.setShowsCancelButton(false, animated: false)
         
         searchView.addSubview(searchController.searchBar)
         tableView.tableHeaderView = headerView
@@ -71,16 +73,26 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             return
         }
         
+        if searchBarText == "" {
+            self.matchingItems = []
+            self.tableView.reloadData()
+            return
+        }
+        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
             guard let response = response else {
+                self.matchingItems = []
+                self.tableView.reloadData()
+                
                 return
             }
             self.matchingItems = response.mapItems
             self.filterSearchResults()
+        
             self.tableView.reloadData()
         }
     }
@@ -97,6 +109,11 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             }
             if (count < matchingItems.count){ count += 1 }
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        matchingItems = []
+        tableView.reloadData()
     }
 }
 
@@ -119,9 +136,6 @@ extension SearchTableViewController {
         cell.timezone = selectedItem.thoroughfare ?? selectedItem.subLocality ?? selectedItem.locality ?? selectedItem.administrativeArea ?? selectedItem.country
         cell.latitude = selectedItem.coordinate.latitude
         cell.longitude = selectedItem.coordinate.longitude
-        
-        cell.backgroundColor = UIColor(displayP3Red: 47/255, green: 47/255, blue: 41/255, alpha: 1.0)
-        cell.tintColor = UIColor.white
         
         return cell
     }

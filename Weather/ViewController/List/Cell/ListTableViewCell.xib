@@ -20,19 +20,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ok-bz-Aol" userLabel="tempLabel">
-                        <rect key="frame" x="316.5" y="4.5" width="92.5" height="66"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
+                        <rect key="frame" x="333" y="10.5" width="76" height="54"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로스엔젤레스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1y-WM-rMG" userLabel="areaLabel">
-                        <rect key="frame" x="23" y="10" width="197.5" height="54.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
+                        <rect key="frame" x="23" y="10" width="156" height="54.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-5W-fp8" userLabel="icoLabel">
-                        <rect key="frame" x="225.5" y="19.5" width="34" height="36"/>
+                        <rect key="frame" x="184" y="19.5" width="34" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
