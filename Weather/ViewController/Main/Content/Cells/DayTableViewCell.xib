@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayCell" id="KGk-i7-Jjw" customClass="DayTableViewCell" customModule="weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="39"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="38.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xy7-3t-6fn" userLabel="dayLabel">
+                        <rect key="frame" x="0.0" y="7.5" width="52" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-ZB-CNK" userLabel="iconLabel">
+                        <rect key="frame" x="130" y="7.5" width="25" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCG-3T-BMl" userLabel="maxTempView">
+                        <rect key="frame" x="300" y="6.5" width="35" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rit-qw-8GD" userLabel="maxTempLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25.5" id="1Kx-WL-vwi"/>
+                            <constraint firstItem="rit-qw-8GD" firstAttribute="leading" secondItem="vCG-3T-BMl" secondAttribute="leading" id="E4H-B9-avf"/>
+                            <constraint firstItem="rit-qw-8GD" firstAttribute="centerY" secondItem="vCG-3T-BMl" secondAttribute="centerY" id="NZd-Q7-X82"/>
+                            <constraint firstAttribute="width" constant="35" id="zEh-BP-zYP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DxA-t7-41I"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTq-kX-tEd" userLabel="minTempView">
+                        <rect key="frame" x="355" y="6.5" width="35" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSO-Zb-IgO" userLabel="minTempLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25.5" id="DVp-Yc-bug"/>
+                            <constraint firstItem="CSO-Zb-IgO" firstAttribute="centerY" secondItem="YTq-kX-tEd" secondAttribute="centerY" id="MoG-8j-2Zr"/>
+                            <constraint firstItem="CSO-Zb-IgO" firstAttribute="leading" secondItem="YTq-kX-tEd" secondAttribute="leading" id="Q5H-bf-jVo"/>
+                            <constraint firstAttribute="width" constant="35" id="sKZ-ib-HJ4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cMs-6Y-FaO"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xy7-3t-6fn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0ee-H7-ThN"/>
+                    <constraint firstAttribute="trailing" secondItem="YTq-kX-tEd" secondAttribute="trailing" id="3at-7N-2JH"/>
+                    <constraint firstItem="vCG-3T-BMl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BE8-m4-pFP"/>
+                    <constraint firstItem="YTq-kX-tEd" firstAttribute="leading" secondItem="vCG-3T-BMl" secondAttribute="trailing" constant="20" id="F9D-7x-U7H"/>
+                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="130" id="aCS-PP-tqS"/>
+                    <constraint firstItem="Xy7-3t-6fn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aZo-1R-Sgj"/>
+                    <constraint firstItem="WJ4-ZB-CNK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fj0-Bu-Pv1"/>
+                    <constraint firstItem="YTq-kX-tEd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xe4-b8-dMH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dayLabel" destination="Xy7-3t-6fn" id="GSk-kM-D0f"/>
+                <outlet property="iconLabel" destination="WJ4-ZB-CNK" id="mTQ-hR-tUt"/>
+                <outlet property="maxTempLabel" destination="rit-qw-8GD" id="8bd-vN-YDm"/>
+                <outlet property="minTempLabel" destination="CSO-Zb-IgO" id="NFI-K4-tFR"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="132.92410714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

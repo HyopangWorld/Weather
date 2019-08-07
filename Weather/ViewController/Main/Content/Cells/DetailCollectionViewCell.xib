@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailCell" id="gTV-IL-0wX" customClass="DetailCollectionViewCell" customModule="weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="192" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="192" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일출" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ent-ce-S4A" userLabel="titleLabel">
+                        <rect key="frame" x="5" y="6" width="26" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 5:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTP-OA-eeJ" userLabel="infoLabel">
+                        <rect key="frame" x="6" y="26" width="121" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QyF-wg-D99" userLabel="line">
+                        <rect key="frame" x="0.0" y="69" width="192" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.80000000000000004" id="C2b-N2-F9U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4fj-mS-TQF"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="QyF-wg-D99" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ock-tK-HyP"/>
+                <constraint firstItem="OTP-OA-eeJ" firstAttribute="top" secondItem="ent-ce-S4A" secondAttribute="bottom" constant="2" id="R8W-9e-cGh"/>
+                <constraint firstAttribute="bottom" secondItem="QyF-wg-D99" secondAttribute="bottom" id="ToC-fd-qle"/>
+                <constraint firstItem="ent-ce-S4A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="c1A-u9-r8d"/>
+                <constraint firstItem="ent-ce-S4A" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="lkU-Ff-32D"/>
+                <constraint firstItem="OTP-OA-eeJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="udG-nw-nRw"/>
+                <constraint firstAttribute="trailing" secondItem="QyF-wg-D99" secondAttribute="trailing" id="z5A-sT-VC9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="infoLabel" destination="OTP-OA-eeJ" id="Zhn-cq-Og2"/>
+                <outlet property="titleLabel" destination="ent-ce-S4A" id="S2Q-9U-B6g"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
