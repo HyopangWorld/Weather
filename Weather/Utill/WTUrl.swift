@@ -16,12 +16,17 @@ struct WTUrl {
     // 고정 URL
     static let developerKey = "73015d0d22e9c7fddee042376b7ea5ed"
     static let prefixUrl = "https://api.darksky.net/forecast/\(developerKey)"
+    // webView
+    static let weatherWebUrl = "https://weather.com/ko-KR/weather/today/l/"
     
     // 상세 URL
     struct postFixUrl {
         
         // (currently, hourly, daily), 한글
         let getWeather = "?exclude=minutely,alerts,flag&lang=ko"
+        
+        // web view 한글
+        let getWeatherWeb = "?par=apple_widget&locale=ko_KR"
         
     }
 }

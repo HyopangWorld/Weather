@@ -12,6 +12,7 @@
 
 import UIKit
 import CoreLocation
+import WebKit
 
 class MainContentViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!                  // 배경 색깔 뷰 (날씨에 따라 변경)
@@ -77,7 +78,21 @@ class MainContentViewController: UIViewController {
     
     // MARK: - 날씨 정보 사이트로 이동
     @IBAction func webButtonDidTap(_ sender: Any) {
-        
+        if var areaList = UserDefaults.standard.dictionary(forKey: "areaList") {
+            let curLocation = areaList["curLocation"] as! Dictionary<String, Double>
+            
+            guard let url = URL(string: "\(WTUrl.weatherWebUrl)\(curLocation["latitude"]!),\(curLocation["logitude"]!)\(WTUrl.postFixUrl().getWeatherWeb)"), UIApplication.shared.canOpenURL(url) else {
+                let alert = UIAlertController(title: "페이지를 연결할 수 없음", message: "네트워크 연결을 확인해주세요.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+                return
+            }
+            
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     
