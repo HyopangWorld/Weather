@@ -90,6 +90,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     // setting section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.rowHeight = 75
+        tableView.separatorStyle = .none
         
         return weatherList.count
     }

@@ -26,6 +26,9 @@ class SearchTableViewController: UITableViewController {
     
     var weatherList: Array<Dictionary<String, Any>>!  // 날씨 리스트
     
+    var notice: String = ""      // 안내문
+    var searchText: String = ""  // 검색어 저장
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +60,6 @@ class SearchTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
         tableView.separatorStyle = .none
     }
-    
     
     // MARK: - 날씨데이터 가져오기 (새로운 리스트 업데이트)
     func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
@@ -105,7 +107,7 @@ class SearchTableViewController: UITableViewController {
         
         self.present(navigationController, animated: true, completion: nil)
     }
-    
+
 }
 
 
@@ -118,10 +120,27 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
         guard let searchBarText = searchController.searchBar.text else {
             return
         }
+        self.searchText = searchBarText
+        
+        // 안내문 출력
+        self.matchingItems = []
+        notice = "도시 확인 중..."
+        self.tableView.reloadData()
+        
+        // 이전 perform 삭제
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.searchResults(_:)), object: nil)
+        // 1초 뒤 검색
+        self.perform(#selector(self.searchResults(_:)), with: nil, afterDelay: 1.0)
+    }
+    
+    
+    //MARK: - 검색
+    @objc func searchResults(_:String){
         
         // 검색창이 빈 경우 결과 테이블 지우기
-        if searchBarText == "" {
+        if searchText == "" {
             self.matchingItems = []
+            notice = ""
             self.tableView.reloadData()
             
             return
@@ -129,12 +148,13 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
         
         //MK 요청
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchBarText
+        request.naturalLanguageQuery = searchText
         
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
             guard let response = response else {
                 self.matchingItems = []
+                self.notice = "검색 결과가 없습니다."
                 self.tableView.reloadData()
                 
                 return
@@ -142,7 +162,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             
             self.matchingItems = response.mapItems
             self.filterSearchResults()
-        
+            
             self.tableView.reloadData()
         }
     }
@@ -160,15 +180,12 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             }
             if (count < matchingItems.count){ count += 1 }
         }
+        if matchingItems.count == 0 {
+            self.matchingItems = []
+            self.notice = "검색 결과가 없습니다."
+            self.tableView.reloadData()
+        }
     }
-    
-    
-    //MARK: - 취소 누를 경우 결과 테이블 refresh
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        matchingItems = []
-        tableView.reloadData()
-    }
-    
 }
 
 
@@ -177,25 +194,35 @@ extension SearchTableViewController {
     
     // setting section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.bounces = false
         tableView.rowHeight = 50
-        return matchingItems.count
+        return matchingItems.count == 0 ? 1 : matchingItems.count
     }
     
     // setting cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
         
-        let selectedItem = matchingItems[indexPath.row].placemark
-        cell.areaLabel?.text = selectedItem.title
-        cell.timezone = selectedItem.thoroughfare ?? selectedItem.subLocality ?? selectedItem.locality ?? selectedItem.administrativeArea ?? selectedItem.country
-        cell.latitude = selectedItem.coordinate.latitude
-        cell.longitude = selectedItem.coordinate.longitude
+        if matchingItems.count != 0 {
+            let selectedItem = matchingItems[indexPath.row].placemark
+            cell.areaLabel?.text = selectedItem.title
+            cell.areaLabel?.tintColor = UIColor.white
+            cell.timezone = selectedItem.thoroughfare ?? selectedItem.subLocality ?? selectedItem.locality ?? selectedItem.administrativeArea ?? selectedItem.country
+            cell.latitude = selectedItem.coordinate.latitude
+            cell.longitude = selectedItem.coordinate.longitude
+            cell.isUserInteractionEnabled = true
+            
+        } else {
+            cell.areaLabel?.text = self.notice
+            cell.areaLabel?.tintColor = UIColor.lightGray
+            cell.isUserInteractionEnabled = false
+        }
         
         return cell
     }
  
     
-    // MARK: - cell 정보 저장 및 리스트 뷰 이동
+    // MARK: - cell 선택 시, 정보 저장 및 리스트 뷰 이동
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as! SearchTableViewCell
         
@@ -213,26 +240,25 @@ extension SearchTableViewController {
             
             userDefaults.set(areaList, forKey: "areaList")
         }
+        userDefaults.synchronize()
         
         // index 순서 저장
         var areaIndex = userDefaults.array(forKey: "areaIndex") as! Array<String>
-        if areaIndex.firstIndex(of: selectedCell.timezone!) == nil {   // 중복 제거
+        // 중복 제거
+        if areaIndex.firstIndex(of: selectedCell.timezone!) == nil {
             areaIndex.append(selectedCell.timezone!)
             userDefaults.set(areaIndex, forKey: "areaIndex")
+            
+            // 날씨 리스트 업데이트 추가 (api 호출)
+            let _ = getWeatherApi([
+                "timezone" : selectedCell.timezone!,
+                "latitude" : selectedCell.latitude!,
+                "logitude" : selectedCell.longitude!])
+            
+            userDefaults.synchronize()
         }
-        
-        userDefaults.synchronize()
-        
-        // 날씨 리스트 업데이트 추가 (api 호출)
-        let isSuccess = getWeatherApi([
-            "timezone" : selectedCell.timezone!,
-            "latitude" : selectedCell.latitude!,
-            "logitude" : selectedCell.longitude!])
         
         // 리스트로 이동
-        if isSuccess {
-            self.goListVC()
-        }
+        self.goListVC()
     }
-    
 }

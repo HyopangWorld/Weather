@@ -425,11 +425,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6rb-c2-6zj" userLabel="tableView">
-                                <rect key="frame" x="0.0" y="44" width="375" height="654"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="688"/>
                                 <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.16862745100000001" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUB-jQ-6JJ" userLabel="footerView">
-                                <rect key="frame" x="0.0" y="698" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="732" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGO-ro-dFu" userLabel="celBtn">
                                         <rect key="frame" x="23" y="25" width="30" height="30"/>
@@ -496,12 +496,12 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZUB-jQ-6JJ" secondAttribute="bottom" id="60F-zN-h3o"/>
                             <constraint firstItem="6rb-c2-6zj" firstAttribute="trailing" secondItem="2ZP-xh-20c" secondAttribute="trailing" id="EyM-44-Adl"/>
                             <constraint firstItem="6rb-c2-6zj" firstAttribute="leading" secondItem="2ZP-xh-20c" secondAttribute="leading" id="KWR-SR-Vhh"/>
                             <constraint firstItem="ZUB-jQ-6JJ" firstAttribute="top" secondItem="6rb-c2-6zj" secondAttribute="bottom" id="Nya-dg-aLz"/>
-                            <constraint firstItem="ZUB-jQ-6JJ" firstAttribute="bottom" secondItem="2ZP-xh-20c" secondAttribute="bottom" id="gv9-8B-yep"/>
                             <constraint firstItem="6rb-c2-6zj" firstAttribute="top" secondItem="2ZP-xh-20c" secondAttribute="top" id="jBJ-CW-rKo"/>
                             <constraint firstItem="ZUB-jQ-6JJ" firstAttribute="leading" secondItem="2ZP-xh-20c" secondAttribute="leading" id="xjr-h7-4u4"/>
                             <constraint firstItem="ZUB-jQ-6JJ" firstAttribute="trailing" secondItem="2ZP-xh-20c" secondAttribute="trailing" id="zLA-pl-B06"/>
@@ -522,7 +522,7 @@
         <scene sceneID="fco-gt-GqJ">
             <objects>
                 <tableViewController id="vUA-Xr-H4a" customClass="SearchTableViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="obz-ob-oIi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="43" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="obz-ob-oIi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>

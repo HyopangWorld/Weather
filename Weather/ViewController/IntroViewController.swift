@@ -14,7 +14,8 @@ import UIKit
 import CoreLocation
 
 class IntroViewController: UIViewController, CLLocationManagerDelegate {
-
+        @IBOutlet weak var apiLoadIndicator: UIActivityIndicatorView!  // api 로드 Indicator
+    
     var locationManager: CLLocationManager?
     
     // 좌표 defaults, 카카오페이
@@ -42,6 +43,15 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate {
         
         // 화면 이동 (위치 허용하는 동안 빈 화면이 보이지 않도록)
         presentMainVC()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        apiLoadIndicator.startAnimating()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        apiLoadIndicator.stopAnimating()
     }
     
     
