@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     /**
-     * 앱 실행
+     * 앱 실행, 필요한 시스템 적 처리를 모두 끝내고 메인 화면을 표시하기 직전 호출 됨.
      */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

@@ -43,7 +43,25 @@ Open API를 이용한 날씨 앱입니다.
 - Device Target : iPhone
 - Code Architecture : MVC  
 
-> README는 계속해서 업데이트 됩니다.
 
+### + code refactoring & Study
 
+인턴십 지원은 끝났지만 study 겸 code , refectoring 진행 예정
 
+- master에 계속 업데이트
+
+```
+1. master : [적용기능] 세부 내용  
+```
+
+### + 목표
+
+```
+1. 라이브러리 사용하지 않고 MVC 패턴을 사용한 현 프로젝트 refactoring 및 버그 수정
+2. 책 꼼꼼한 재은씨의 swift: 기본편을 보면서 적용할 수 있는 UI기능 적용해보기
+3. 데이터 저장 형식 SQL로 변환
+4. 책 꼼꼼한 재은씨의 swift: 문법편을 보면서 적용할 수 있는 기능 적용해보기
+5. MVVM 패턴 적용해보기
+6. RxSwift 사용해보기
+
+```
