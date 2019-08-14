@@ -14,11 +14,11 @@ import Foundation
 import UIKit
 import MapKit
 
-class SearchTableViewController: UITableViewController {
+class SearchViewController: UIViewController {
     // searchBar custom
-    @IBOutlet var headerView: UIView!
-    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var cancleBtn: UIButton!  // 닫기 버튼
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var resultTable: UITableView!
     
     var searchController = UISearchController()
     
@@ -40,7 +40,7 @@ class SearchTableViewController: UITableViewController {
         // 검색 화면 설정
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+        searchBar.delegate = self
         searchController.delegate = self
         self.definesPresentationContext = true
         
@@ -48,17 +48,16 @@ class SearchTableViewController: UITableViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         
         // 검색 bar 설정
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.barStyle = .black
-        searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.setShowsCancelButton(false, animated: false)
+        searchBar.enablesReturnKeyAutomatically = false
+        searchBar.barStyle = .black
+        searchBar.tintColor = UIColor.white
+        searchBar.searchBarStyle = .minimal
+        searchBar.setShowsCancelButton(false, animated: false)
         
-        searchView.addSubview(searchController.searchBar)
-        tableView.tableHeaderView = headerView
-        
-        tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
-        tableView.separatorStyle = .none
+        resultTable.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
+        resultTable.delegate = self
+        resultTable.dataSource = self
+        resultTable.separatorStyle = .none
     }
     
     // MARK: - 날씨데이터 가져오기 (새로운 리스트 업데이트)
@@ -112,12 +111,12 @@ class SearchTableViewController: UITableViewController {
 
 
 // MARK: - 검색
-extension SearchTableViewController : UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     
     // MARK: - 검색 결과 업데이트
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchBarText = searchController.searchBar.text else {
+        guard let searchBarText = searchBar.text else {
             return
         }
         self.searchText = searchBarText
@@ -125,7 +124,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
         // 안내문 출력
         self.matchingItems = []
         notice = "도시 확인 중..."
-        self.tableView.reloadData()
+        self.resultTable.reloadData()
         
         // 이전 perform 삭제
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.searchResults(_:)), object: nil)
@@ -141,7 +140,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
         if searchText == "" {
             self.matchingItems = []
             notice = ""
-            self.tableView.reloadData()
+            self.resultTable.reloadData()
             
             return
         }
@@ -155,7 +154,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             guard let response = response else {
                 self.matchingItems = []
                 self.notice = "검색 결과가 없습니다."
-                self.tableView.reloadData()
+                self.resultTable.reloadData()
                 
                 return
             }
@@ -163,7 +162,7 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
             self.matchingItems = response.mapItems
             self.filterSearchResults()
             
-            self.tableView.reloadData()
+            self.resultTable.reloadData()
         }
     }
     
@@ -183,19 +182,19 @@ extension SearchTableViewController : UISearchControllerDelegate, UISearchResult
         if matchingItems.count == 0 {
             self.matchingItems = []
             self.notice = "검색 결과가 없습니다."
-            self.tableView.reloadData()
+            self.resultTable.reloadData()
         }
     }
 }
 
 
 // MARK: - 검색 결과 테이블 뷰 cell
-extension SearchTableViewController {
+extension SearchViewController {
     
     // setting section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.bounces = false
-        tableView.rowHeight = 50
+        resultTable.bounces = false
+        resultTable.rowHeight = 50
         return matchingItems.count == 0 ? 1 : matchingItems.count
     }
     
