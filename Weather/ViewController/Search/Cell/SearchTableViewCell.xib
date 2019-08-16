@@ -22,17 +22,18 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대한민국 서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF3-SV-qQk" userLabel="areaLabel">
                         <rect key="frame" x="10" y="14.5" width="300" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="VF3-SV-qQk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TwJ-Ko-LsW"/>
                     <constraint firstAttribute="trailing" secondItem="VF3-SV-qQk" secondAttribute="trailing" constant="10" id="Vh2-xy-1eg"/>
                     <constraint firstItem="VF3-SV-qQk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hyc-MU-XIc"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="0.80487478595890416" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

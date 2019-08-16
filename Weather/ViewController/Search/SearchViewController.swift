@@ -15,12 +15,8 @@ import UIKit
 import MapKit
 
 class SearchViewController: UIViewController {
-    // searchBar custom
-    @IBOutlet weak var cancleBtn: UIButton!  // 닫기 버튼
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet var resultTable: UITableView!
-    
-    var searchController = UISearchController()
+    var searchController: UISearchController!
+    @IBOutlet weak var resultTable: UITableView!
     
     var matchingItems : [MKMapItem] = []  // 검색 결과 데이터
     
@@ -40,7 +36,7 @@ class SearchViewController: UIViewController {
         // 검색 화면 설정
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchBar.delegate = self
+        searchController.searchBar.delegate = self
         searchController.delegate = self
         self.definesPresentationContext = true
         
@@ -48,11 +44,9 @@ class SearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         
         // 검색 bar 설정
-        searchBar.enablesReturnKeyAutomatically = false
-        searchBar.barStyle = .black
-        searchBar.tintColor = UIColor.white
-        searchBar.searchBarStyle = .minimal
-        searchBar.setShowsCancelButton(false, animated: false)
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.barStyle = .black
+        resultTable.tableHeaderView = searchController.searchBar
         
         resultTable.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
         resultTable.delegate = self
@@ -116,7 +110,7 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
     
     // MARK: - 검색 결과 업데이트
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchBarText = searchBar.text else {
+        guard let searchBarText = searchController.searchBar.text else {
             return
         }
         self.searchText = searchBarText
@@ -185,21 +179,24 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
             self.resultTable.reloadData()
         }
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 
 // MARK: - 검색 결과 테이블 뷰 cell
-extension SearchViewController {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // setting section
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        resultTable.bounces = false
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         resultTable.rowHeight = 50
         return matchingItems.count == 0 ? 1 : matchingItems.count
     }
     
     // setting cells
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
         
         if matchingItems.count != 0 {
@@ -222,7 +219,7 @@ extension SearchViewController {
  
     
     // MARK: - cell 선택 시, 정보 저장 및 리스트 뷰 이동
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as! SearchTableViewCell
         
         // 검색 화면 비활성화

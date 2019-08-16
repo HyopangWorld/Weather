@@ -478,7 +478,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vUA-Xr-H4a" kind="show" identifier="goSearchSegue" id="m4V-uE-H8L"/>
+                                            <segue destination="s0R-O0-UyX" kind="show" identifier="goSearchSegue" id="SF1-Xq-rVd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -518,70 +518,56 @@
             </objects>
             <point key="canvasLocation" x="1509" y="84"/>
         </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="fco-gt-GqJ">
+        <!--Search View Controller-->
+        <scene sceneID="nCd-4E-sJt">
             <objects>
-                <tableViewController id="vUA-Xr-H4a" customClass="SearchTableViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="43" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="obz-ob-oIi">
+                <viewController id="s0R-O0-UyX" customClass="SearchViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aty-lI-7j9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexBackgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="0.79529644691780821" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="vUA-Xr-H4a" id="Aei-n9-mO3"/>
-                            <outlet property="delegate" destination="vUA-Xr-H4a" id="ygq-S5-qBp"/>
-                        </connections>
-                    </tableView>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQb-mp-Y9w" userLabel="headerView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도시, 우편번호 또는 공항 위치 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-62-ep2">
+                                        <rect key="frame" x="91.666666666666686" y="63" width="192" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="b1X-KW-P1d"/>
+                                    <constraint firstItem="hlY-SP-ZE2" firstAttribute="bottom" secondItem="jyL-62-ep2" secondAttribute="bottom" constant="10" id="ddI-39-YiT"/>
+                                    <constraint firstItem="jyL-62-ep2" firstAttribute="centerX" secondItem="ZQb-mp-Y9w" secondAttribute="centerX" id="sOL-ea-KWc"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="hlY-SP-ZE2"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KBG-49-FeH">
+                                <rect key="frame" x="0.0" y="90" width="375" height="688"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KBG-49-FeH" firstAttribute="bottom" secondItem="EoD-gn-6UM" secondAttribute="bottom" id="ECU-Q6-b1N"/>
+                            <constraint firstAttribute="trailing" secondItem="ZQb-mp-Y9w" secondAttribute="trailing" id="HaD-ow-QEU"/>
+                            <constraint firstItem="KBG-49-FeH" firstAttribute="trailing" secondItem="EoD-gn-6UM" secondAttribute="trailing" id="cbB-5Y-tbo"/>
+                            <constraint firstItem="ZQb-mp-Y9w" firstAttribute="top" secondItem="Aty-lI-7j9" secondAttribute="top" id="dXI-yy-auM"/>
+                            <constraint firstItem="KBG-49-FeH" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="bottom" id="fZO-GS-u4y"/>
+                            <constraint firstItem="KBG-49-FeH" firstAttribute="leading" secondItem="EoD-gn-6UM" secondAttribute="leading" id="vcR-t1-W1D"/>
+                            <constraint firstItem="ZQb-mp-Y9w" firstAttribute="leading" secondItem="Aty-lI-7j9" secondAttribute="leading" id="za2-ri-ivu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EoD-gn-6UM"/>
+                    </view>
                     <connections>
-                        <outlet property="cancleBtn" destination="KqA-pX-eqD" id="L8L-dF-v9f"/>
-                        <outlet property="headerView" destination="ZQb-mp-Y9w" id="de3-hI-fdp"/>
-                        <outlet property="searchView" destination="ETM-IX-l9a" id="hLC-XO-Lxb"/>
+                        <outlet property="resultTable" destination="KBG-49-FeH" id="du6-AV-jp8"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7NT-Lo-cMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="fwh-Qy-Cbg" userLabel="Exit" sceneMemberID="exit"/>
-                <view contentMode="scaleToFill" id="ZQb-mp-Y9w" userLabel="headerView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETM-IX-l9a" userLabel="searchView">
-                            <rect key="frame" x="0.0" y="42" width="414" height="43"/>
-                            <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqA-pX-eqD" userLabel="cancleBtn">
-                            <rect key="frame" x="358" y="8" width="32" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="닫기">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <segue destination="fwh-Qy-Cbg" kind="unwind" unwindAction="backListVCWithSegue:" id="JJ8-Sm-cUc"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도시, 우편번호 또는 공항 위치 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-62-ep2">
-                            <rect key="frame" x="111" y="15" width="192" height="17"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="ETM-IX-l9a" secondAttribute="trailing" id="5Ub-2i-fcT"/>
-                        <constraint firstItem="ETM-IX-l9a" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="42" id="6RL-Ph-OaM"/>
-                        <constraint firstItem="ETM-IX-l9a" firstAttribute="leading" secondItem="ZQb-mp-Y9w" secondAttribute="leading" id="Nlx-C7-kEc"/>
-                        <constraint firstAttribute="trailing" secondItem="KqA-pX-eqD" secondAttribute="trailing" constant="24" id="TMo-MS-phe"/>
-                        <constraint firstItem="jyL-62-ep2" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="15" id="WiN-ao-rRO"/>
-                        <constraint firstAttribute="bottom" secondItem="ETM-IX-l9a" secondAttribute="bottom" constant="5" id="pAn-Wn-vc1"/>
-                        <constraint firstItem="jyL-62-ep2" firstAttribute="centerX" secondItem="ZQb-mp-Y9w" secondAttribute="centerX" id="sOL-ea-KWc"/>
-                        <constraint firstItem="KqA-pX-eqD" firstAttribute="top" secondItem="ZQb-mp-Y9w" secondAttribute="top" constant="8" id="y8n-DE-bAi"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="hlY-SP-ZE2"/>
-                </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nf-c0-dX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228.985507246377" y="92.410714285714278"/>
+            <point key="canvasLocation" x="2249" y="81"/>
         </scene>
     </scenes>
 </document>

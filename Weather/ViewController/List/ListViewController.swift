@@ -68,7 +68,7 @@ class ListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "goSearchSegue":
-            let searchVC = segue.destination as! SearchTableViewController
+            let searchVC = segue.destination as! SearchViewController
             for vc in navigationController!.viewControllers {
                 if vc is ListViewController {
                     // 날씨 데이터 전달 (api 중복 호출 방지)

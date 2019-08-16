@@ -18,6 +18,7 @@
 		240FE74222F30A3000B310D8 /* WeatherCurrentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74122F30A3000B310D8 /* WeatherCurrentVO.swift */; };
 		240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74322F30A5F00B310D8 /* WeatherHourlyVO.swift */; };
 		240FE74622F30AEA00B310D8 /* WeatherDailyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE74522F30AEA00B310D8 /* WeatherDailyVO.swift */; };
+		24281DC723066FCB009EE791 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24281DC623066FCB009EE791 /* SearchViewController.swift */; };
 		242FCB0D22F5CA650087162B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242FCB0822F5CA650087162B /* ListViewController.swift */; };
 		242FCB0E22F5CA650087162B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242FCB0A22F5CA650087162B /* ListTableViewCell.swift */; };
 		242FCB0F22F5CA650087162B /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 242FCB0B22F5CA650087162B /* ListTableViewCell.xib */; };
@@ -28,7 +29,6 @@
 		247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C022F1E55800E6CECF /* DayTableViewCell.swift */; };
 		247470C322F1E55800E6CECF /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247470C122F1E55800E6CECF /* DayTableViewCell.xib */; };
 		247470C822F1F57200E6CECF /* WTEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247470C722F1F57200E6CECF /* WTEnum.swift */; };
-		2477C3D122F6E22F00E1969E /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477C3D022F6E22F00E1969E /* SearchTableViewController.swift */; };
 		2477C3D622F718C000E1969E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477C3D522F718C000E1969E /* MapKit.framework */; };
 		2477C3DA22F7498E00E1969E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477C3D822F7498E00E1969E /* SearchTableViewCell.swift */; };
 		2477C3DB22F7498E00E1969E /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477C3D922F7498E00E1969E /* SearchTableViewCell.xib */; };
@@ -53,6 +53,7 @@
 		240FE74122F30A3000B310D8 /* WeatherCurrentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCurrentVO.swift; sourceTree = "<group>"; };
 		240FE74322F30A5F00B310D8 /* WeatherHourlyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyVO.swift; sourceTree = "<group>"; };
 		240FE74522F30AEA00B310D8 /* WeatherDailyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDailyVO.swift; sourceTree = "<group>"; };
+		24281DC623066FCB009EE791 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		242FCB0822F5CA650087162B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		242FCB0A22F5CA650087162B /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		242FCB0B22F5CA650087162B /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		247470C022F1E55800E6CECF /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		247470C122F1E55800E6CECF /* DayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		247470C722F1F57200E6CECF /* WTEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTEnum.swift; sourceTree = "<group>"; };
-		2477C3D022F6E22F00E1969E /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		2477C3D522F718C000E1969E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2477C3D822F7498E00E1969E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2477C3D922F7498E00E1969E /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		2477C3CF22F6DA9800E1969E /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				2477C3D022F6E22F00E1969E /* SearchTableViewController.swift */,
+				24281DC623066FCB009EE791 /* SearchViewController.swift */,
 				2477C3D722F7497400E1969E /* Cell */,
 			);
 			path = Search;
@@ -341,6 +341,7 @@
 				247470A922F1C53100E6CECF /* MainContentViewController.swift in Sources */,
 				24ADDC0922F7B16C009A7FD0 /* ApiClient+Weather.swift in Sources */,
 				247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */,
+				24281DC723066FCB009EE791 /* SearchViewController.swift in Sources */,
 				240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */,
 				24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */,
 				242FCB0D22F5CA650087162B /* ListViewController.swift in Sources */,
@@ -352,7 +353,6 @@
 				24ADDC0B22F82939009A7FD0 /* MainViewController.swift in Sources */,
 				240FE73622F29F1A00B310D8 /* WTCollectionPagingView.swift in Sources */,
 				2477C3DA22F7498E00E1969E /* SearchTableViewCell.swift in Sources */,
-				2477C3D122F6E22F00E1969E /* SearchTableViewController.swift in Sources */,
 				240FE73F22F2F7D800B310D8 /* WTUrl.swift in Sources */,
 				240FE72822F265CA00B310D8 /* WTCollectionView.swift in Sources */,
 				240FE73B22F2F52400B310D8 /* ApiClient.swift in Sources */,
