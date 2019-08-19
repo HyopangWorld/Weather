@@ -36,8 +36,6 @@ Open API를 이용한 날씨 앱입니다.
 
 ### Style Guide
 
-지속적인 업데이트 예정
-
 - Swift Dev Version : 5
 - Deployment Target : 12.2
 - Device Target : iPhone
@@ -59,8 +57,8 @@ Open API를 이용한 날씨 앱입니다.
 ```
 1. 라이브러리 사용하지 않고 MVC 패턴을 사용한 현 프로젝트 refactoring 및 버그 수정
 2. 책 꼼꼼한 재은씨의 swift: 기본편을 보면서 적용할 수 있는 UI기능 적용해보기
-3. 데이터 저장 형식 SQL로 변환
-4. 책 꼼꼼한 재은씨의 swift: 문법편을 보면서 적용할 수 있는 기능 적용해보기
+3. 책 꼼꼼한 재은씨의 swift: 실전편을 보면서 적용할 수 있는 기능 적용해보기
+4. 데이터 저장 형식 SQL로 변환
 5. MVVM 패턴 적용해보기
 6. RxSwift 사용해보기
 
