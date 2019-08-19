@@ -13,8 +13,7 @@
 import UIKit
 import CoreLocation
 
-class IntroViewController: UIViewController, CLLocationManagerDelegate {
-        @IBOutlet weak var apiLoadIndicator: UIActivityIndicatorView!  // api 로드 Indicator
+class IntroViewController: BaseViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     
@@ -47,11 +46,11 @@ class IntroViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        apiLoadIndicator.startAnimating()
+        showIndicator()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        apiLoadIndicator.stopAnimating()
+        hideIndicator()
     }
     
     

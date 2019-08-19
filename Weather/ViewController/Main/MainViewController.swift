@@ -12,7 +12,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     var mainPageVC : UIPageViewController! // page vc
     var viewControllers: NSArray!          // page content views array
     
@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
         initView()
     }
     
-    func initView(){
+    override func initView(){
         self.mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
         self.mainPageVC.dataSource = self
         
@@ -73,11 +73,12 @@ class MainViewController: UIViewController {
     func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
         var result = true
         
+        showIndicator()
         ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
-            
             let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
             self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
             
+            self.hideIndicator()
         }, fail: { err in
             // 기본 데이터 입력
             self.weatherList.append([

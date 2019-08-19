@@ -14,7 +14,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     var searchController: UISearchController!
     @IBOutlet weak var resultTable: UITableView!
     
@@ -32,7 +32,7 @@ class SearchViewController: UIViewController {
         initView()
     }
     
-    func initView(){
+    override func initView(){
         // 검색 화면 설정
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

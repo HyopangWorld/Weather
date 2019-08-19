@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var celBtn: UIButton!  // 섭씨 변환 버튼
     @IBOutlet weak var fahBtn: UIButton!  // 화씨 변환 버튼
@@ -29,7 +29,7 @@ class ListViewController: UIViewController {
         initView()
     }
     
-    func initView(){
+    override func initView(){
         //button 설정
         celBtn.isSelected = UserDefaults.standard.bool(forKey: "isCelsius")
         fahBtn.isSelected = !UserDefaults.standard.bool(forKey: "isCelsius")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240510B9230A2761006FEDED /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240510B8230A2761006FEDED /* BaseViewController.swift */; };
 		240FE72822F265CA00B310D8 /* WTCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE72722F265CA00B310D8 /* WTCollectionView.swift */; };
 		240FE72F22F26D8F00B310D8 /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240FE72D22F26D8F00B310D8 /* TimeCollectionViewCell.swift */; };
 		240FE73022F26D8F00B310D8 /* TimeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240FE72E22F26D8F00B310D8 /* TimeCollectionViewCell.xib */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240510B8230A2761006FEDED /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		240FE72722F265CA00B310D8 /* WTCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTCollectionView.swift; sourceTree = "<group>"; };
 		240FE72D22F26D8F00B310D8 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		240FE72E22F26D8F00B310D8 /* TimeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		247470B822F1C59400E6CECF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				240510B8230A2761006FEDED /* BaseViewController.swift */,
 				2477C3CF22F6DA9800E1969E /* Search */,
 				242FCB0622F5CA650087162B /* List */,
 				244E9D1122F336C700CA1620 /* Main */,
@@ -339,6 +342,7 @@
 				240FE74622F30AEA00B310D8 /* WeatherDailyVO.swift in Sources */,
 				24C0DD4E22F3E9F70036452B /* MainContentViewController+DailyTable.swift in Sources */,
 				247470A922F1C53100E6CECF /* MainContentViewController.swift in Sources */,
+				240510B9230A2761006FEDED /* BaseViewController.swift in Sources */,
 				24ADDC0922F7B16C009A7FD0 /* ApiClient+Weather.swift in Sources */,
 				247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */,
 				24281DC723066FCB009EE791 /* SearchViewController.swift in Sources */,
