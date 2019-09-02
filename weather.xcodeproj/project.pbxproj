@@ -39,6 +39,7 @@
 		24B017F222F5393A005F570B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B017F022F5393A005F570B /* IntroViewController.swift */; };
 		24B017F322F5393A005F570B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B017F122F5393A005F570B /* IntroViewController.xib */; };
 		24BB5C85231CB0BA00BB82F9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB5C84231CB0BA00BB82F9 /* libsqlite3.tbd */; };
+		24BB5C89231CB68600BB82F9 /* WTSQLite3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BB5C88231CB68600BB82F9 /* WTSQLite3.swift */; };
 		24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4B22F3CA130036452B /* WTFormat.swift */; };
 		24C0DD4E22F3E9F70036452B /* MainContentViewController+DailyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4D22F3E9F70036452B /* MainContentViewController+DailyTable.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		24B017F122F5393A005F570B /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		24BB5C84231CB0BA00BB82F9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		24BB5C86231CB11100BB82F9 /* weather-SQLite3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weather-SQLite3-Bridging-Header.h"; sourceTree = "<group>"; };
+		24BB5C88231CB68600BB82F9 /* WTSQLite3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTSQLite3.swift; sourceTree = "<group>"; };
 		24C0DD4B22F3CA130036452B /* WTFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFormat.swift; sourceTree = "<group>"; };
 		24C0DD4D22F3E9F70036452B /* MainContentViewController+DailyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainContentViewController+DailyTable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 				247470C722F1F57200E6CECF /* WTEnum.swift */,
 				240FE73E22F2F7D800B310D8 /* WTUrl.swift */,
 				24C0DD4B22F3CA130036452B /* WTFormat.swift */,
+				24BB5C88231CB68600BB82F9 /* WTSQLite3.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				24ADDC0922F7B16C009A7FD0 /* ApiClient+Weather.swift in Sources */,
 				247470C222F1E55800E6CECF /* DayTableViewCell.swift in Sources */,
 				24281DC723066FCB009EE791 /* SearchViewController.swift in Sources */,
+				24BB5C89231CB68600BB82F9 /* WTSQLite3.swift in Sources */,
 				240FE74422F30A5F00B310D8 /* WeatherHourlyVO.swift in Sources */,
 				24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */,
 				242FCB0D22F5CA650087162B /* ListViewController.swift in Sources */,
