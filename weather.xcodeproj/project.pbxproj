@@ -38,6 +38,7 @@
 		24ADDC0B22F82939009A7FD0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ADDC0A22F82939009A7FD0 /* MainViewController.swift */; };
 		24B017F222F5393A005F570B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B017F022F5393A005F570B /* IntroViewController.swift */; };
 		24B017F322F5393A005F570B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B017F122F5393A005F570B /* IntroViewController.xib */; };
+		24BB5C85231CB0BA00BB82F9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB5C84231CB0BA00BB82F9 /* libsqlite3.tbd */; };
 		24C0DD4C22F3CA130036452B /* WTFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4B22F3CA130036452B /* WTFormat.swift */; };
 		24C0DD4E22F3E9F70036452B /* MainContentViewController+DailyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0DD4D22F3E9F70036452B /* MainContentViewController+DailyTable.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,8 @@
 		24ADDC0A22F82939009A7FD0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24B017F022F5393A005F570B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		24B017F122F5393A005F570B /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		24BB5C84231CB0BA00BB82F9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		24BB5C86231CB11100BB82F9 /* weather-SQLite3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weather-SQLite3-Bridging-Header.h"; sourceTree = "<group>"; };
 		24C0DD4B22F3CA130036452B /* WTFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFormat.swift; sourceTree = "<group>"; };
 		24C0DD4D22F3E9F70036452B /* MainContentViewController+DailyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainContentViewController+DailyTable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BB5C85231CB0BA00BB82F9 /* libsqlite3.tbd in Frameworks */,
 				2477C3D622F718C000E1969E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +137,7 @@
 		2474709A22F1C53100E6CECF = {
 			isa = PBXGroup;
 			children = (
+				24BB5C86231CB11100BB82F9 /* weather-SQLite3-Bridging-Header.h */,
 				247470A522F1C53100E6CECF /* weather */,
 				247470A422F1C53100E6CECF /* Products */,
 				2477C3D422F718C000E1969E /* Frameworks */,
@@ -247,6 +252,7 @@
 		2477C3D422F718C000E1969E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24BB5C84231CB0BA00BB82F9 /* libsqlite3.tbd */,
 				2477C3D522F718C000E1969E /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -497,6 +503,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyopangworld.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "weather-SQLite3-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -516,6 +523,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyopangworld.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "weather-SQLite3-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

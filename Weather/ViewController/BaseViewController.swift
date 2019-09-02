@@ -19,7 +19,6 @@ class BaseViewController: UIViewController {
     
     // MARK: - view 초기화 작업
     func initView(){
-        // view UI 초기화 작업
     }
     
     

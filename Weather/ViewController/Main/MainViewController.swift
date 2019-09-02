@@ -112,7 +112,6 @@ extension MainViewController: UIPageViewControllerDataSource {
         let contentVC : MainContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! MainContentViewController
         self.index = index
         
-        
         let weather = weatherList[index]
         contentVC.currentVO = weather["currentVO"] as! WeatherCurrentVO
         contentVC.dailyVOList = weather["dailyVOList"] as! [WeatherDailyVO]
