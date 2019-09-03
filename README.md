@@ -2,6 +2,7 @@
 
 Open API를 이용한 날씨 앱입니다.
 
+<video src="./content/weatherVideo.mov" height="500px"></video>
 
 
 ### Feature

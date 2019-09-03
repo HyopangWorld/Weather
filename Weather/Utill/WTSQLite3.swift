@@ -16,6 +16,5 @@ class WTSQLite3 {
         let fileMgr = FileManager()
         let docPathURL = fileMgr.urls(for: .documentDirectory, in: .userDomainMask).first
         let dbPath = docPathURL?.appendingPathComponent("db.sqlite").path
-        
     }
 }
