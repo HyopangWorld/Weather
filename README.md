@@ -2,15 +2,12 @@
 
 Open API를 이용한 날씨 앱입니다.
 
-<div style="width:50%; float:left"><img src="./content/play.gif"/></div>
-<div style="width:50%; float:right"><img src="./content/delete.gif"/></div>
+<div><img src="./content/play.gif" style="width:40%; float:left"/>
+<img src="./content/delete.gif" style="width:40%; float:left"/></div>
 
 <br>
 
-
-###  
-
-### Feature
+###  Feature
 
 1. 현재 위치 기반의 날씨 정보
 2. 도시 검색 기능 및 목록 추가
