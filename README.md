@@ -3,7 +3,7 @@
 Open API를 이용한 날씨 앱입니다.
 
 <div style="width:50%; float:left"><img src="./content/play.gif"/></div>
-<div style="width:50%; float:left"><img src="./content/delete.gif"/></div>
+<div style="width:50%; float:right"><img src="./content/delete.gif"/></div>
 
 <br>
 
