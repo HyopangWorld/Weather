@@ -14,12 +14,13 @@ import UIKit
 import CoreLocation
 
 class IntroViewController: BaseViewController, CLLocationManagerDelegate {
-    
+    var dbManager = WTSQLite3()
     var locationManager: CLLocationManager?
     
     // 좌표 defaults, 카카오페이
     var curLatitude = 37.4790986
     var curLongitude = 126.8754323
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,10 @@ class IntroViewController: BaseViewController, CLLocationManagerDelegate {
         }
         
         // 정보 저장
+        dbManager.initDB()
+        if (dbManager.createTable(tbNm: "weatherList", columns: ["area":"TEXT"])) {
+            print("테이블 생성 성공")
+        }
         setDataUserDeafaults()
         
         // 화면 이동 (위치 허용하는 동안 빈 화면이 보이지 않도록)
