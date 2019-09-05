@@ -14,10 +14,9 @@ import UIKit
 import CoreLocation
 
 class IntroViewController: BaseViewController, CLLocationManagerDelegate {
-    var dbManager = WTSQLite3()
+    var dbManager = DBManager()
     var locationManager: CLLocationManager?
     
-    // 좌표 defaults, 카카오페이
     var curLatitude = 37.4790986
     var curLongitude = 126.8754323
     
@@ -40,7 +39,7 @@ class IntroViewController: BaseViewController, CLLocationManagerDelegate {
         
         // 정보 저장
         dbManager.initDB()
-        if (dbManager.createTable(tbNm: "weatherList", columns: ["area":"TEXT"])) {
+        if (dbManager.create(tbNm: "weatherList", columns: ["area":"TEXT"])) {
             print("테이블 생성 성공")
         }
         setDataUserDeafaults()
