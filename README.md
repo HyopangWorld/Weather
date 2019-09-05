@@ -12,8 +12,12 @@ Open API를 이용한 날씨 앱입니다.
 2. 도시 검색 기능 및 목록 추가
 3. 추가한 도시의 날씨 정보
 
+<br>
+
 ### 설계
 <img src="./content/achitect.png"/>
+
+<br>
 
 ### 구현
 
@@ -30,6 +34,8 @@ Open API를 이용한 날씨 앱입니다.
 |       WTEnum       |       각종 고정 데이터 Enum        |
 |       WTUrl       |       url 정보        |
 |       WTFormat       |       각종 Data Format Util        |
+
+<br>
 
 ### Trouble Shooting
 1. API 호출이 잦아 느려지는 현상
