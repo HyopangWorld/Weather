@@ -13,7 +13,7 @@ Open API를 이용한 날씨 앱입니다.
 3. 추가한 도시의 날씨 정보
 
 ### 설계
-<img src="./content/achitect"/>
+<img src="./content/achitect.png"/>
 
 ### 구현
 
