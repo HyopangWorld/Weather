@@ -163,16 +163,16 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
     
     //MARK: - 국가 단위의 검색 제외 필터링
     func filterSearchResults(){
-        var count = 0
-        for item in matchingItems {
-            guard item.placemark.administrativeArea != nil else {
-                matchingItems.remove(at: count)
-                count -= 1
-                
-                return
-            }
-            if (count < matchingItems.count){ count += 1 }
-        }
+//        var count = 0
+//        for item in matchingItems {
+//            guard item.placemark.administrativeArea != nil else {
+//                matchingItems.remove(at: count)
+//                count -= 1
+//
+//                return
+//            }
+//            if (count < matchingItems.count){ count += 1 }
+//        }
         if matchingItems.count == 0 {
             self.matchingItems = []
             self.notice = "검색 결과가 없습니다."
