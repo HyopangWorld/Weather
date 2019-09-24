@@ -34,18 +34,18 @@ class MainViewController: BaseViewController {
     
     override func initView(){
         
-        self.mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
-        self.mainPageVC.dataSource = self
+        mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
+        mainPageVC.dataSource = self
         
         // 시작 index 설정
         let startVC = self.viewControllerAtIndex(index: startIndex) as MainContentViewController
         viewControllers = NSArray(object: startVC)
         
-        self.mainPageVC.setViewControllers(viewControllers as? [UIViewController] , direction: .forward, animated: true, completion: nil)
-        self.mainPageVC.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width, height: self.view.frame.height)
+        mainPageVC.setViewControllers(viewControllers as? [UIViewController] , direction: .forward, animated: true, completion: nil)
+        mainPageVC.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width, height: self.view.frame.height)
         
-        self.addChild(self.mainPageVC)
-        self.view.addSubview(self.mainPageVC.view)
+        self.addChild(mainPageVC)
+        self.view.addSubview(mainPageVC.view)
     }
     
     
@@ -77,13 +77,20 @@ class MainViewController: BaseViewController {
         
         showIndicator()
         
-        ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
-            
-            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
-            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
+        guard let latitude = area["latitude"], let logitude = area["logitude"], let timezone = area["timezone"] else {
+            return false
+        }
+        
+        ApiClient().request("\(latitude),\(logitude)\(WTUrl.postFixUrl().getWeather)", success: { result in
             
             self.hideIndicator()
+            
+            let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
+            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: "\(timezone)"))
+            
         }, fail: { err in
+            
+            self.hideIndicator()
             
             // 기본 데이터 입력
             self.weatherList.append([
@@ -131,23 +138,23 @@ extension MainViewController: UIPageViewControllerDataSource {
     // before VC
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        if( self.index == 0 ) {
+        if( index == 0 ) {
             return nil
         }
-        self.index -= 1
+        index -= 1
         
-        return self.viewControllerAtIndex(index: self.index)
+        return self.viewControllerAtIndex(index: index)
     }
     
     // after VC
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        if( self.index == UserDefaults.standard.dictionary(forKey: "areaList")!.count - 1){
+        if( index == UserDefaults.standard.dictionary(forKey: "areaList")!.count - 1){
             return nil
         }
-        self.index += 1
+        index += 1
         
-        return self.viewControllerAtIndex(index: self.index)
+        return self.viewControllerAtIndex(index: index)
     }
     
     // view 갯수

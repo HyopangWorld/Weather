@@ -12,7 +12,7 @@
  
 import Foundation
 
-class HourlyVO {
+struct HourlyVO {
     var hourlyTime: String? = "오후 5시"  // 시간 (오전/오후 00시)
     var icon: WeatherIcon? = .rain      // 날씨 아이콘
     var temperature: Int? = 31          // 온도

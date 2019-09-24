@@ -20,7 +20,7 @@ extension ApiClient {
     func getWeatherList(weather: NSDictionary, timezone: String?) -> Dictionary<String, Any> {
         do {
             
-            let weatherVO = WeatherVO()
+            var weatherVO = WeatherVO()
             
             // 지역별 날씨
             weatherVO.latitude = weather["latitude"] as? Double
@@ -32,7 +32,7 @@ extension ApiClient {
             weatherVO.temperature = Int(round((currently["temperature"] as! NSNumber).doubleValue))
             
             // 현재 위치의 날씨
-            let currentVO = CurrentVO()
+            var currentVO = CurrentVO()
             var hourlyVOList = Array<HourlyVO>()
             var dailyVOList = Array<DailyVO>()
             
@@ -53,7 +53,7 @@ extension ApiClient {
             
             for items in daily["data"] as! NSArray {
                 let dailyList = items as! NSDictionary
-                let dailyVO = DailyVO()
+                var dailyVO = DailyVO()
                 
                 if(dailyVOList.count == 0){
                     currentVO.currentTime =  WTFormat().toDayOfWeek(dailyList["time"] as! NSNumber)
@@ -79,7 +79,7 @@ extension ApiClient {
             let hourly = weather["hourly"] as! NSDictionary
             for items in hourly["data"] as! NSArray {
                 let hourlyList = items as! NSDictionary
-                let hourlyVO = HourlyVO()
+                var hourlyVO = HourlyVO()
                 
                 hourlyVO.hourlyTime = WTFormat().toHour(hourlyList["time"] as! NSNumber)
                 hourlyVO.icon = WeatherIcon(rawValue: (hourlyList["icon"] as! String))!

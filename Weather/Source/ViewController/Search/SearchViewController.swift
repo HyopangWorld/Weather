@@ -39,7 +39,7 @@ class SearchViewController: BaseViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.delegate = self
-        self.definesPresentationContext = true
+        definesPresentationContext = true
         
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
@@ -57,13 +57,25 @@ class SearchViewController: BaseViewController {
     
     // MARK: - 날씨데이터 가져오기 (새로운 리스트 업데이트)
     func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
+        
         var result = true
-        ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
+        
+        showIndicator()
+        
+        guard let latitude = area["latitude"], let logitude = area["logitude"], let timezone = area["timezone"] else {
+            return false
+        }
+        
+        ApiClient().request("\(latitude),\(logitude)\(WTUrl.postFixUrl().getWeather)", success: { result in
+            
+            self.hideIndicator()
             
             let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
-            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
+            self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: "\(timezone)"))
             
         }, fail: { err in
+            
+            self.hideIndicator()
             
             // 기본 데이터 입력
             self.weatherList.append([
@@ -82,7 +94,6 @@ class SearchViewController: BaseViewController {
             self.present(navigationController, animated: true, completion: nil)
             
             result = false
-            
         })
         
         return result
@@ -91,7 +102,11 @@ class SearchViewController: BaseViewController {
     
     // MARK: - 리스트 화면으로 이동한다.
     func goListVC(){
-        let storyboard = self.storyboard!
+        
+        guard let storyboard = self.storyboard else {
+            return
+        }
+        
         let listVC = storyboard.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
         listVC.weatherList = self.weatherList
         
@@ -115,12 +130,12 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
         guard let searchBarText = searchController.searchBar.text else {
             return
         }
-        self.searchText = searchBarText
+        searchText = searchBarText
         
         // 안내문 출력
-        self.matchingItems = []
+        matchingItems = []
         notice = "도시 확인 중..."
-        self.resultTable.reloadData()
+        resultTable.reloadData()
         
         // 이전 perform 삭제
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.searchResults(_:)), object: nil)
@@ -134,7 +149,7 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
         
         // 검색창이 빈 경우 결과 테이블 지우기
         if searchText == "" {
-            self.matchingItems = []
+            matchingItems = []
             notice = ""
             self.resultTable.reloadData()
             
@@ -177,9 +192,9 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
 //        }
         
         if matchingItems.count == 0 {
-            self.matchingItems = []
-            self.notice = "검색 결과가 없습니다."
-            self.resultTable.reloadData()
+            matchingItems = []
+            notice = "검색 결과가 없습니다."
+            resultTable.reloadData()
         }
     }
     
@@ -205,7 +220,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
         
         if matchingItems.count != 0 {
+            
             let selectedItem = matchingItems[indexPath.row].placemark
+            
             cell.areaLabel?.text = selectedItem.title
             cell.areaLabel?.tintColor = UIColor.white
             cell.timezone = selectedItem.thoroughfare ?? selectedItem.subLocality ?? selectedItem.locality ?? selectedItem.administrativeArea ?? selectedItem.country
@@ -214,7 +231,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.isUserInteractionEnabled = true
             
         } else {
-            cell.areaLabel?.text = self.notice
+            
+            cell.areaLabel?.text = notice
             cell.areaLabel?.tintColor = UIColor.lightGray
             cell.isUserInteractionEnabled = false
         }
@@ -233,12 +251,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 지역 정보 저장
         let userDefaults = UserDefaults.standard
+        
         if var areaList = userDefaults.dictionary(forKey: "areaList") {
             areaList.updateValue([
                 "timezone" : selectedCell.timezone!,
                 "latitude" : selectedCell.latitude!,
                 "logitude" : selectedCell.longitude!
-                ], forKey: selectedCell.timezone)
+                ], forKey: selectedCell.timezone!)
             
             userDefaults.set(areaList, forKey: "areaList")
         }
@@ -251,6 +270,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             "logitude" : selectedCell.longitude!])
         
         // 리스트로 이동
-        self.goListVC()
+        goListVC()
     }
 }

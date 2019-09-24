@@ -12,7 +12,7 @@
 
 import Foundation
 
-class WeatherVO{
+struct WeatherVO{
     var latitude: Double?                // 요청한 위도
     var logitude: Double?                // 요청한 경도
     var timezone: String? = "Seoul"      // 요청한 지역명

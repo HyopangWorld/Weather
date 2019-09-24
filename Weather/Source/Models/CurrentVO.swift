@@ -12,7 +12,7 @@
 
 import Foundation
 
-class CurrentVO {
+struct CurrentVO {
     var currentTime: DayOfWeek? = .wed                          // 요일
     var timezone: String? = "서울특별시"                           // 요청한 지역명
     var summary: String? = "흐림"                                // 요약
@@ -36,14 +36,14 @@ class CurrentVO {
         
         var currentDetailArray = Array<Any>()
         
-        currentDetailArray.append(self.sunriseTime!)
-        currentDetailArray.append(self.cloudCover!)
-        currentDetailArray.append(self.ozone!)
-        currentDetailArray.append(self.visibility!)
-        currentDetailArray.append(self.sunsetTime!)
-        currentDetailArray.append(self.humidity!)
-        currentDetailArray.append(self.pressure!)
-        currentDetailArray.append(self.uvIndex!)
+        currentDetailArray.append(sunriseTime!)
+        currentDetailArray.append(cloudCover!)
+        currentDetailArray.append(ozone!)
+        currentDetailArray.append(visibility!)
+        currentDetailArray.append(sunsetTime!)
+        currentDetailArray.append(humidity!)
+        currentDetailArray.append(pressure!)
+        currentDetailArray.append(uvIndex!)
         
         return currentDetailArray
     }

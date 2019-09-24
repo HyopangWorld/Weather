@@ -16,9 +16,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var areaLabel: UILabel!  // 검색 결과 라벨
     
     // 검색 결과 데이터 저장
-    var timezone: String!   // 지역명
-    var latitude: Double!   // 위도
-    var longitude: Double!  // 경도
+    var timezone: String?   // 지역명
+    var latitude: Double?   // 위도
+    var longitude: Double?  // 경도
     
     override func awakeFromNib() {
         super.awakeFromNib()

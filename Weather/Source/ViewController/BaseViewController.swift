@@ -32,9 +32,11 @@ class BaseViewController: UIViewController {
         
         // 최상위 뷰에 띄우기
         if let keywindow = UIApplication.shared.keyWindow {
-            self.indicator?.center = keywindow.center
-            keywindow.addSubview(self.indicator!)
-            keywindow.bringSubviewToFront(self.indicator!)
+            
+            indicator?.center = keywindow.center
+            
+            keywindow.addSubview(indicator!)
+            keywindow.bringSubviewToFront(indicator!)
         }
         
         indicator.startAnimating()

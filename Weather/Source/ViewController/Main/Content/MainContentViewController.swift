@@ -46,7 +46,7 @@ class MainContentViewController: UIViewController {
         super.viewDidLoad()
         
         // View 초기 설정
-        self.initView()
+        initView()
     }
     
     func initView(){

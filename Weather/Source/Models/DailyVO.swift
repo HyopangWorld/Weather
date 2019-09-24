@@ -12,7 +12,7 @@
 
 import Foundation
 
-class DailyVO {
+struct DailyVO {
     var dailyTime: DayOfWeek? = .wed  // 요일
     var icon: WeatherIcon? = .rain    // 날씨 아이콘
     var temperatureMin: Int? = 28     // 최고기온

@@ -158,11 +158,13 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - 메인 화면으로 이동한다. (선택한 cell이 첫 화면으로 보이게 된다.)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyboard = self.storyboard!
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        guard let storyboard = self.storyboard else {
+            return
+        }
         
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
         mainVC.weatherList = Array<Dictionary<String, Any>>()
-        mainVC.weatherList = self.weatherList
+        mainVC.weatherList = weatherList
         mainVC.startIndex = indexPath.row
         
         // pop MainView

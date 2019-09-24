@@ -33,7 +33,7 @@ class WTCollectionPagingView: WTCollectionView {
     
     // MARK: - cell 페이징
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let talLayout = self.collection!.collectionViewLayout as! UICollectionViewFlowLayout
+        let talLayout = collection!.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidth = talLayout.itemSize.width
         
         var offset = targetContentOffset.pointee
