@@ -30,6 +30,7 @@ class ListViewController: BaseViewController {
     }
     
     override func initView(){
+        
         //button 설정
         celBtn.isSelected = UserDefaults.standard.bool(forKey: "isCelsius")
         fahBtn.isSelected = !UserDefaults.standard.bool(forKey: "isCelsius")
@@ -42,6 +43,7 @@ class ListViewController: BaseViewController {
     
     // MARK: - Change to celsious
     @IBAction func celBtnDidTap(_ sender: UIButton) {
+        
         sender.isSelected = !sender.isSelected
         fahBtn.isSelected = !fahBtn.isSelected
         
@@ -54,6 +56,7 @@ class ListViewController: BaseViewController {
     
     // MARK: - Change to fahenhit
     @IBAction func fahBtnDidTap(_ sender: UIButton) {
+        
         sender.isSelected = !sender.isSelected
         celBtn.isSelected = !celBtn.isSelected
         
@@ -66,7 +69,9 @@ class ListViewController: BaseViewController {
     
     // MARK: - 검색 뷰로 이동
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
+            
         case "goSearchSegue":
             let searchVC = segue.destination as! SearchViewController
             for vc in navigationController!.viewControllers {
@@ -89,6 +94,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
     // setting section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         tableView.rowHeight = 75
         tableView.separatorStyle = .none
         
@@ -97,6 +103,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // setting cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListTableViewCell
         
         let weather = weatherList[indexPath.row]
@@ -109,6 +116,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
         let image = weatherVO.icon!.getBackgroundImg()
         imageView.image = image
+        
         cell.backgroundView = UIView()
         cell.backgroundView!.addSubview(imageView)
         
@@ -118,7 +126,9 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - cell 삭제
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (delete, indexPath) in
+            
             let cell = tableView.cellForRow(at: indexPath) as! ListTableViewCell
             
             // 현재 위치 삭제 제외
@@ -147,8 +157,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - 메인 화면으로 이동한다. (선택한 cell이 첫 화면으로 보이게 된다.)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let storyboard = self.storyboard!
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        
         mainVC.weatherList = Array<Dictionary<String, Any>>()
         mainVC.weatherList = self.weatherList
         mainVC.startIndex = indexPath.row

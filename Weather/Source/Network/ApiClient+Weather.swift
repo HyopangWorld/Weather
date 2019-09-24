@@ -19,6 +19,7 @@ extension ApiClient {
     // MARK: - 날씨 API 호출 response 데이터 처리
     func getWeatherList(weather: NSDictionary, timezone: String?) -> Dictionary<String, Any> {
         do {
+            
             let weatherVO = WeatherVO()
             
             // 지역별 날씨

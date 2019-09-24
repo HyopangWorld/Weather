@@ -19,11 +19,13 @@ class BaseViewController: UIViewController {
     
     // MARK: - view 초기화 작업
     func initView(){
+        
     }
     
     
     // MARK: - 공통 show indicator
     func showIndicator(){
+        
         if indicator == nil {
             indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         }

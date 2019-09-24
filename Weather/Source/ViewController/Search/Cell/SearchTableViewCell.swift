@@ -30,6 +30,7 @@ class SearchTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
         areaLabel.text = nil
         timezone = nil
         latitude = nil

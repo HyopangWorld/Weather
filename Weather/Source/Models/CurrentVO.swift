@@ -33,6 +33,7 @@ class CurrentVO {
     
     // MARK: - Detail 정보 Array getter
     func getCurrentDetailArray() -> Array<Any> {
+        
         var currentDetailArray = Array<Any>()
         
         currentDetailArray.append(self.sunriseTime!)

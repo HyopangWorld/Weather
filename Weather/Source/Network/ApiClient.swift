@@ -27,6 +27,7 @@ public protocol NetworkRequest {
 public class ApiClient: NetworkRequest {
     
     public func request(_ url: String, success: @escaping (Data) -> Void, fail: @escaping (NSError?) -> Void) {
+        
         do {
             // url 생성
             guard let apiURI = URL(string:"\(WTUrl.prefixUrl)/\(url)") else {

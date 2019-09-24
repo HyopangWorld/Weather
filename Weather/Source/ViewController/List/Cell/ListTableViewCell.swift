@@ -27,6 +27,7 @@ class ListTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
         areaLabel.text = nil
         icoLabel.text = nil
         tempLabel.text = nil

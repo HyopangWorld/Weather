@@ -33,6 +33,7 @@ class SearchViewController: BaseViewController {
     }
     
     override func initView(){
+        
         // 검색 화면 설정
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -110,6 +111,7 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
     
     // MARK: - 검색 결과 업데이트
     func updateSearchResults(for searchController: UISearchController) {
+        
         guard let searchBarText = searchController.searchBar.text else {
             return
         }
@@ -173,6 +175,7 @@ extension SearchViewController : UISearchControllerDelegate, UISearchResultsUpda
 //            }
 //            if (count < matchingItems.count){ count += 1 }
 //        }
+        
         if matchingItems.count == 0 {
             self.matchingItems = []
             self.notice = "검색 결과가 없습니다."
@@ -191,12 +194,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // setting section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         resultTable.rowHeight = 50
         return matchingItems.count == 0 ? 1 : matchingItems.count
     }
     
     // setting cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
         
         if matchingItems.count != 0 {
@@ -220,6 +225,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - cell 선택 시, 정보 저장 및 리스트 뷰 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedCell = tableView.cellForRow(at: indexPath) as! SearchTableViewCell
         
         // 검색 화면 비활성화

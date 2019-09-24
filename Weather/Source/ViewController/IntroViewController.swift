@@ -55,6 +55,7 @@ class IntroViewController: BaseViewController, CLLocationManagerDelegate {
     
     // MARK: - UserDeafaults에 값 저장하기
     func setDataUserDeafaults(){
+        
         // 현재 좌표값 저장
         let userDefaults = UserDefaults.standard
         if var areaList = userDefaults.dictionary(forKey: "areaList") {
@@ -66,6 +67,7 @@ class IntroViewController: BaseViewController, CLLocationManagerDelegate {
             userDefaults.set(areaList, forKey: "areaList")
             
         } else {
+            
             // 초기값 저장
             userDefaults.setValue([
                 "curLocation" : [ "latitude" : curLatitude,
@@ -87,6 +89,7 @@ class IntroViewController: BaseViewController, CLLocationManagerDelegate {
     
     // MARK: - 메인화면으로 이동
     func presentMainVC(){
+        
         // 메인 스토리보드 이동
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")

@@ -33,6 +33,7 @@ class MainViewController: BaseViewController {
     }
     
     override func initView(){
+        
         self.mainPageVC = (self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController)
         self.mainPageVC.dataSource = self
         
@@ -71,15 +72,19 @@ class MainViewController: BaseViewController {
     
     // MARK: - 날씨데이터 가져오기
     func getWeatherApi(_ area: Dictionary<String, Any>) -> Bool {
+        
         var result = true
         
         showIndicator()
+        
         ApiClient().request("\(area["latitude"]!),\(area["logitude"]!)\(WTUrl.postFixUrl().getWeather)", success: { result in
+            
             let weather = try! JSONSerialization.jsonObject(with: result, options: []) as! NSDictionary
             self.weatherList.append(ApiClient().getWeatherList(weather: weather, timezone: area["timezone"] as! String?))
             
             self.hideIndicator()
         }, fail: { err in
+            
             // 기본 데이터 입력
             self.weatherList.append([
                 "weatherVO" : WeatherVO(),
@@ -109,6 +114,7 @@ extension MainViewController: UIPageViewControllerDataSource {
     
     // current VC
     func viewControllerAtIndex (index : Int) -> MainContentViewController {
+        
         let contentVC : MainContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! MainContentViewController
         self.index = index
         
@@ -124,6 +130,7 @@ extension MainViewController: UIPageViewControllerDataSource {
     
     // before VC
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
         if( self.index == 0 ) {
             return nil
         }
@@ -134,6 +141,7 @@ extension MainViewController: UIPageViewControllerDataSource {
     
     // after VC
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
         if( self.index == UserDefaults.standard.dictionary(forKey: "areaList")!.count - 1){
             return nil
         }

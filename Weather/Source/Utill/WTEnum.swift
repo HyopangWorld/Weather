@@ -33,18 +33,25 @@ enum DayOfWeek: Int {
     
     func getDayOfWeekString() -> String {
         switch self {
+            
         case .mon :
             return "월요일"
+            
         case .thu :
             return "화요일"
+            
         case .wed :
             return "수요일"
+            
         case .the :
             return "목요일"
+            
         case .fri :
             return "금요일"
+            
         case .sat :
             return "토요일"
+            
         case .sun :
             return "일요일"
         }
@@ -68,32 +75,46 @@ enum WeatherIcon: String {
     case thunderstorm = "thunderstorm"
     case tornado = "tornado"
     
+    
     func getWeatherIcon() -> String {
         switch self {
+            
         case .clear_day:
             return "☀️"
+            
         case .clear_night:
             return "☀️"
+            
         case .rain:
             return "☔️"
+            
         case .snow:
             return "❄️"
+            
         case .sleet:
             return "🌧"
+            
         case .wind:
             return "🌬"
+            
         case .fog:
             return "🌫"
+            
         case .cloudy:
             return "☁️"
+            
         case .partly_cloudy_day:
             return "⛅️"
+            
         case .partly_cloudy_night:
             return "⛅️"
+            
         case .hail:
             return "🌊"
+            
         case .thunderstorm:
             return "⛈"
+            
         case .tornado:
             return "🌪"
         }
@@ -103,16 +124,22 @@ enum WeatherIcon: String {
     // MARK: - icon에 따른 배경 이미지
     func getBackgroundImg() -> UIImage {
         switch self {
+            
         case .clear_day, .clear_night:
             return UIImage(named: "clear.png")!
+            
         case .rain, .thunderstorm, .tornado, .hail:
             return UIImage(named: "rainy.png")!
+            
         case .snow, .sleet:
             return UIImage(named: "snow.png")!
+            
         case .wind, .cloudy:
             return UIImage(named: "cloudy.png")!
+            
         case .partly_cloudy_day, .partly_cloudy_night:
             return UIImage(named: "cloudy.png")!
+            
         case .fog:
             return UIImage(named: "fog.png")!
         }
@@ -133,20 +160,28 @@ enum DetailTypeString: Int {
     
     func getDetailTypeString() -> String {
         switch self {
+            
         case .sunrise:
             return "일출"
+            
         case .cloudCover:
             return "구름"
+            
         case .ozone:
             return "오존"
+            
         case .visibility:
             return "가시거리"
+            
         case .sunset:
             return "일몰"
+            
         case .humidity:
             return "습도"
+            
         case .pressure:
             return "기압"
+            
         case .uvIndex:
             return "자외선 지수"
         }
