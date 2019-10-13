@@ -33,7 +33,6 @@
 		2477C3D622F718C000E1969E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477C3D522F718C000E1969E /* MapKit.framework */; };
 		2477C3DA22F7498E00E1969E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477C3D822F7498E00E1969E /* SearchTableViewCell.swift */; };
 		2477C3DB22F7498E00E1969E /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477C3D922F7498E00E1969E /* SearchTableViewCell.xib */; };
-		248B3D2C2320CDEE006022BB /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B3D2B2320CDEE006022BB /* DBManager.swift */; };
 		2492649D22FA062F00CAAD74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2492649C22FA062F00CAAD74 /* Assets.xcassets */; };
 		24ADDC0922F7B16C009A7FD0 /* ApiClient+Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ADDC0822F7B16C009A7FD0 /* ApiClient+Weather.swift */; };
 		24ADDC0B22F82939009A7FD0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ADDC0A22F82939009A7FD0 /* MainViewController.swift */; };
@@ -74,7 +73,6 @@
 		2477C3D522F718C000E1969E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2477C3D822F7498E00E1969E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2477C3D922F7498E00E1969E /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		248B3D2B2320CDEE006022BB /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBManager.swift; path = Weather/Source/Utill/DBManager.swift; sourceTree = SOURCE_ROOT; };
 		2492649C22FA062F00CAAD74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24ADDC0822F7B16C009A7FD0 /* ApiClient+Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+Weather.swift"; sourceTree = "<group>"; };
 		24ADDC0A22F82939009A7FD0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 		247470B922F1C5A100E6CECF /* Utill */ = {
 			isa = PBXGroup;
 			children = (
-				248B3D2B2320CDEE006022BB /* DBManager.swift */,
 				247470C722F1F57200E6CECF /* WTEnum.swift */,
 				240FE73E22F2F7D800B310D8 /* WTUrl.swift */,
 				24C0DD4B22F3CA130036452B /* WTFormat.swift */,
@@ -425,7 +422,6 @@
 				240FE74222F30A3000B310D8 /* CurrentVO.swift in Sources */,
 				247470C822F1F57200E6CECF /* WTEnum.swift in Sources */,
 				240FE74622F30AEA00B310D8 /* DailyVO.swift in Sources */,
-				248B3D2C2320CDEE006022BB /* DBManager.swift in Sources */,
 				24C0DD4E22F3E9F70036452B /* MainContentViewController+DailyTable.swift in Sources */,
 				247470A922F1C53100E6CECF /* MainContentViewController.swift in Sources */,
 				240510B9230A2761006FEDED /* BaseViewController.swift in Sources */,
